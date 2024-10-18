@@ -1,0 +1,93 @@
+# Angular
+# Compiled output
+Membership_UI/dist/
+Membership_UI/tmp/
+
+# Dependencies
+Membership_UI/node_modules/
+
+# IDEs and editors
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+Membership_UI/logs
+Membership_UI/*.log
+Membership_UI/npm-debug.log*
+Membership_UI/yarn-debug.log*
+Membership_UI/yarn-error.log*
+
+# Angular specific
+Membership_UI/.angular/
+Membership_UI/coverage/
+
+# Compiled TypeScript
+Membership_UI/*.tsbuildinfo
+Membership_UI/*.ngfactory.ts
+Membership_UI/*.ngsummary.json
+
+# Environment files
+Membership_UI/src/environments/environment*.ts
+Membership_UI/.env
+
+# Misc
+Membership_API/.DS_Store
+Membership_API/Thumbs.db
+
+# NET Core
+# Build results
+Membership_API/[Dd]ebug/
+Membership_API/[Rr]elease/
+Membership_API/x64/
+Membership_API/x86/
+Membership_API/[Aa][Rr][Mm]/
+Membership_API/[Aa][Rr][Mm]64/
+Membership_API/bld/
+Membership_API/[Bb]in/
+Membership_API/[Oo]bj/
+
+# User-specific files
+Membership_API/*.rsuser
+Membership_API/*.suo
+Membership_API/*.user
+Membership_API/*.userosscache
+Membership_API/*.sln.docstates
+Membership_API/.vscode/
+
+# ASP.NET Scaffolding
+Membership_API/ScaffoldingReadMe.txt
+
+# DotNet specific
+Membership_API/project.lock.json
+Membership_API/project.fragment.lock.json
+Membership_API/artifacts/
+
+# Windows image file caches
+Membership_API/Thumbs.db
+Membership_API/ehthumbs.db
+
+# Folder config file
+Membership_API/desktop.ini
+
+# Recycle Bin used on file shares
+Membership_API/$RECYCLE.BIN/
+
+# JetBrains Rider
+Membership_API/.idea/
+
+# Rider-specific files
+Membership_API/*.ipr
+Membership_API/*.iws
+Membership_API/*.iml
+
+# Files built by tooling
+Membership_API/!.gitattributes
+Membership_API/*.vs/
+
+# Package files
+Membership_API/**/packages/
