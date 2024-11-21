@@ -1,0 +1,196 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/oza/Developer/Personal/DAF Computer/Membership/Membership_API/MembershipImplementation/MembershipImplementation.csproj": {}
+  },
+  "projects": {
+    "/Users/oza/Developer/Personal/DAF Computer/Membership/Membership_API/MembershipImplementation/MembershipImplementation.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/oza/Developer/Personal/DAF Computer/Membership/Membership_API/MembershipImplementation/MembershipImplementation.csproj",
+        "projectName": "MembershipImplementation",
+        "projectPath": "/Users/oza/Developer/Personal/DAF Computer/Membership/Membership_API/MembershipImplementation/MembershipImplementation.csproj",
+        "packagesPath": "/Users/oza/.nuget/packages/",
+        "outputPath": "/Users/oza/Developer/Personal/DAF Computer/Membership/Membership_API/MembershipImplementation/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/oza/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/oza/Developer/Personal/DAF Computer/Membership/Membership_API/MembershipInfrustructure/MembershipInfrustructure.csproj": {
+                "projectPath": "/Users/oza/Developer/Personal/DAF Computer/Membership/Membership_API/MembershipInfrustructure/MembershipInfrustructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "EPPlus": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "FluentEmail.Core": {
+              "target": "Package",
+              "version": "[3.0.2, )"
+            },
+            "FluentEmail.Smtp": {
+              "target": "Package",
+              "version": "[3.0.2, )"
+            },
+            "Hangfire": {
+              "target": "Package",
+              "version": "[1.8.7, )"
+            },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "NPOI": {
+              "target": "Package",
+              "version": "[2.6.2, )"
+            },
+            "ReportViewerCore.NETCore": {
+              "target": "Package",
+              "version": "[15.1.19, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/oza/Developer/Personal/DAF Computer/Membership/Membership_API/MembershipInfrustructure/MembershipInfrustructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/oza/Developer/Personal/DAF Computer/Membership/Membership_API/MembershipInfrustructure/MembershipInfrustructure.csproj",
+        "projectName": "MembershipInfrustructure",
+        "projectPath": "/Users/oza/Developer/Personal/DAF Computer/Membership/Membership_API/MembershipInfrustructure/MembershipInfrustructure.csproj",
+        "packagesPath": "/Users/oza/.nuget/packages/",
+        "outputPath": "/Users/oza/Developer/Personal/DAF Computer/Membership/Membership_API/MembershipInfrustructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/oza/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.CodeAnalysis.CSharp.Workspaces": {
+              "target": "Package",
+              "version": "[4.8.0-3.final, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.10, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

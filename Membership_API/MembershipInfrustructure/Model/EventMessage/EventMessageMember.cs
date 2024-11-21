@@ -27,6 +27,5 @@ public class EventMessageMember : WithIdModel2
 public enum MessageStatus
 {
     Pending,
-    Approved,
     Sent
 }

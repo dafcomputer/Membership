@@ -15,8 +15,8 @@ public class EventMessage:WithIdModel2
     
     public MessageType MessageType { get; set; }
     
-    
-    
+    public bool IsApproved { get; set; }
+  
 }
 
 public enum MessageType

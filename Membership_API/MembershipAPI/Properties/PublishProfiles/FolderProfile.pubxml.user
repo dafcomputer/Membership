@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <History>True|2024-07-26T14:24:57.0301092Z;True|2024-07-25T15:37:00.8877591+03:00;True|2024-07-25T15:35:48.9661525+03:00;True|2024-07-24T11:23:02.7422891+03:00;True|2024-07-24T11:10:29.0103436+03:00;True|2024-07-24T09:11:36.8295479+03:00;True|2024-07-24T09:11:13.7089853+03:00;True|2024-07-23T23:54:08.9164881+03:00;True|2024-05-02T18:24:51.5731856+03:00;True|2024-04-12T20:06:17.1994621+03:00;True|2024-04-12T20:03:46.3830949+03:00;True|2024-04-02T14:07:38.1794216+03:00;True|2024-03-29T17:45:11.6094130+03:00;True|2024-03-28T12:02:26.1300374+03:00;True|2024-03-27T16:10:29.8724224+03:00;True|2024-03-27T10:37:41.1250693+03:00;True|2024-03-26T16:29:26.5729477+03:00;True|2024-03-13T22:42:03.8172717+03:00;True|2024-03-13T22:41:19.0175056+03:00;True|2024-03-11T10:25:41.2216535+03:00;True|2024-03-07T10:20:52.9742102+03:00;True|2024-03-07T10:20:29.3345288+03:00;True|2024-03-06T21:58:05.1618154+03:00;True|2024-03-05T22:23:56.8114242+03:00;True|2024-03-05T22:23:10.5892932+03:00;True|2024-03-05T21:42:37.9930215+03:00;False|2024-03-05T21:41:51.3882755+03:00;</History>
+    <LastFailureDetails />
+    <_PublishTargetUrl>C:\inetpub\wwwroot\MEMBERSHIP.API</_PublishTargetUrl>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="SqlConnection">
+      <Value>Server=5.75.176.87%3bInitial Catalog=D2%3bTrustServerCertificate=True%3b User ID=sa%3bPassword=ABI-ZEER7879%3btimeout=3600%3bMultipleActiveResultSets=true%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

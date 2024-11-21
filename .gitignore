@@ -91,3 +91,10 @@ Membership_API/*.vs/
 
 # Package files
 Membership_API/**/packages/
+node_modules
+Membership_API/MembershipAPI/bin/*
+Membership_API/MembershipAPI/obj/*
+
+Membership_API/MembershipInfrustructure/bin/*
+Membership_API/MembershipInfrustructure/obj/*
+Membership_UI/node_modules/*
