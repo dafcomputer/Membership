@@ -1,0 +1,24 @@
+@media only screen and (max-width: 768px) {
+   
+    .auth-wrapper {
+        flex-direction: column;
+    }
+    .col-8, .col-4 {
+        width: 100%;
+    }
+    .row {
+        flex-wrap: wrap;
+        margin: 0 -5px;
+    }
+    .col-xl-4, .col-xl-8 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 5px;
+    }
+    .auth-header {
+        text-align: center;
+    }
+    .auth-main .card-body {
+        padding: 15px;
+    }
+}

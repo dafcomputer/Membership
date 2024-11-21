@@ -1,0 +1,157 @@
+import { Component, OnInit } from "@angular/core";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+
+import { ConfigurationService } from "src/app/services/configuration.service";
+
+import { AddMembershipTypeComponent } from "./add-membership-type/add-membership-type.component";
+import { CourseComponent } from "../course/course.component";
+import { UserService } from "src/app/services/user.service";
+import { UserView } from "src/app/models/auth/userDto";
+import { IMembershipTypeGetDto } from "src/app/models/configuration/IMembershipDto";
+
+@Component({
+  selector: "app-membership-types",
+  templateUrl: "./membership-types.component.html",
+  styleUrls: ["./membership-types.component.scss"],
+})
+export class MembershipTypesComponent implements OnInit {
+  membershipTypes: IMembershipTypeGetDto[];
+  paginatedMembershipTypes: IMembershipTypeGetDto[];
+  formats: string[] = ["bold", "italic"];
+  userView: UserView;
+
+  first: number = 0;
+  rows: number = 3;
+  currentPage: number = 1;
+  totalPages: number;
+  pagesArray: number[] = [];
+  totalRecords: number;
+
+  ngOnInit(): void {
+    this.getMembershipTypes();
+    this.userView = this.userService.getCurrentUser();
+  }
+
+  constructor(
+    private modalService: NgbModal,
+    private userService: UserService,
+    private controlService: ConfigurationService
+  ) {}
+
+  getMembershipTypes() {
+    this.controlService.getMembershipTYpes().subscribe({
+      next: (res) => {
+        this.membershipTypes = res;
+        this.totalRecords = this.membershipTypes.length;
+        this.calculateTotalPages();
+      },
+    });
+  }
+
+  addMembershipType() {
+    let modalRef = this.modalService.open(AddMembershipTypeComponent, {
+      size: "lg",
+      backdrop: "static",
+    });
+
+    modalRef.result.then(() => {
+      this.getMembershipTypes();
+    });
+  }
+
+  removeMembershipType(MembershipTypeId: string) {
+    // this.confirmationService.confirm({
+    //   message: "Are You sure you want to delete this MembershipType?",
+    //   header: "Delete Confirmation",
+    //   icon: "pi pi-info-circle",
+    //   accept: () => {
+    //     this.controlService.deleteMembershipType(MembershipTypeId).subscribe({
+    //       next: (res) => {
+    //         if (res.success) {
+    //           this.messageService.add({
+    //             severity: "success",
+    //             summary: "Confirmed",
+    //             detail: res.message,
+    //           });
+    //           this.getMembershipTypes();
+    //         } else {
+    //           this.messageService.add({
+    //             severity: "error",
+    //             summary: "Rejected",
+    //             detail: res.message,
+    //           });
+    //         }
+    //       },
+    //       error: (err) => {
+    //         this.messageService.add({
+    //           severity: "error",
+    //           summary: "Rejected",
+    //           detail: err,
+    //         });
+    //       },
+    //     });
+    //   },
+    //   reject: (type: ConfirmEventType) => {
+    //     switch (type) {
+    //       case ConfirmEventType.REJECT:
+    //         this.messageService.add({
+    //           severity: "error",
+    //           summary: "Rejected",
+    //           detail: "You have rejected",
+    //         });
+    //         break;
+    //       case ConfirmEventType.CANCEL:
+    //         this.messageService.add({
+    //           severity: "warn",
+    //           summary: "Cancelled",
+    //           detail: "You have cancelled",
+    //         });
+    //         break;
+    //     }
+    //   },
+    //   key: "positionDialog",
+    // });
+  }
+
+  VIewCourses(membershipType: IMembershipTypeGetDto) {
+    let modalRef = this.modalService.open(CourseComponent, {
+      size: "xl",
+      backdrop: "static",
+    });
+
+    modalRef.componentInstance.MembershipType = membershipType;
+  }
+
+  updateMembershipType(MembershipType: IMembershipTypeGetDto) {
+    let modalRef = this.modalService.open(AddMembershipTypeComponent, {
+      size: "lg",
+      backdrop: "static",
+    });
+
+    modalRef.componentInstance.MembershipType = MembershipType;
+
+    modalRef.result.then(() => {
+      this.getMembershipTypes();
+    });
+  }
+
+  calculateTotalPages() {
+    this.totalPages = Math.ceil(this.totalRecords / this.rows);
+    this.pagesArray = Array.from({ length: this.totalPages }, (_, i) => i + 1);
+    this.goToPage(1);
+  }
+
+  goToPage(page: number) {
+    if (page > 0 && page <= this.totalPages) {
+      this.currentPage = page;
+      this.onPageChange();
+    }
+  }
+
+  onPageChange() {
+    const start = (this.currentPage - 1) * this.rows;
+    const end = start + this.rows;
+    // Slice your data here to only display records for the current page
+    this.paginatedMembershipTypes = this.membershipTypes.slice(start, end);
+  }
+}

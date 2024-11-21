@@ -1,0 +1,62 @@
+<div class="page-header ng-star-inserted">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title"><!----><!---->
+                    <h5 class="mb-2 ng-star-inserted"> Membership</h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a _>Messages </a></li>
+                    <li class="breadcrumb-item ng-star-inserted">
+                        <a href="javascript:">
+                            Message List
+                        </a>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="card">
+
+
+    <div class="col-md-12 p-4 ">
+        <div class="row mt-2">
+            <div class="col-12 text-end" *ngIf="userView.role.includes('SuperAdmin')">
+
+                <button class="btn btn-sm btn-outline-primary text-end" (click)="addMessage()">
+                    <i class="bi bi-plust"></i> Add Message </button>
+
+
+            </div>
+        </div>
+
+        <div class="col-3">
+            <input type="text" placeholder="search ..." class="form-control" style="font-size: 18px;"
+                [(ngModel)]="searchTerm" (input)="applyFilter()" placeholder="Search">
+        </div>
+
+        <table class="custom-table mt-4">
+            <thead>
+                <tr>
+
+                    <th>Message Content</th>
+                    <th>Message Type</th>
+                    <th>Is Approved </th>
+
+                    <th *ngIf="userView.role.includes('SuperAdmin')">Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+
+            </tbody>
+
+        </table>
+        <div class="card flex justify-content-center">
+        </div>
+    </div>
+
+</div>

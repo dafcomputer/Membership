@@ -1,0 +1,11 @@
+{
+    "NAV": {
+        "BE_A_MEMBER": "Be a Member",
+        "LOGIN": "Login"
+    },
+    "SERVICES": {
+        "SHELTER": "Shelter",
+        "EDUCATION": "Education",
+        "COUNSELING": "Counseling"
+    }
+}

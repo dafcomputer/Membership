@@ -1,0 +1,145 @@
+<div class="modal-content">
+  <div class="modal-header">
+
+  </div>
+
+  <div class="card p-4">
+
+    <div class="row" id="card" [hidden]="isMobile">
+      <div class="col-xl-6">
+        <h5>Front Side</h5>
+        <div id="id-card" style="border: 1px solid #000;">
+          <div class="id-card material-ui-shadow">
+
+            <!-- \\ mugshot -->
+            <div class="id-card__mugshot">
+              <img [src]="imagePath" alt="Profile" id="id-card-mugshot">
+
+            </div>
+            <!-- // mugshot -->
+            <div class="id-card__qrcode">
+              <qrcode [qrdata]="member.memberId" [width]="90" [errorCorrectionLevel]="'M'"></qrcode>
+            </div>
+            <!-- \\ foundation logo -->
+            <div class="id-card__logo logo">
+              <!-- <span class="logo__big">EMWA</span> -->
+              <img src="../../../../../assets/logo-transparent.png" alt="Profile" class="logo__big">
+              <span class="logo__small">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                የአቢዘር ቤተሰቦች ማህበር
+                <br>ABI-ZEER COMMUNITY ASSOCIATION
+              </span>
+            </div>
+            <!-- // foundation logo -->
+
+            <!-- \\ subject id -->
+            <div class="id-card__subject-id">
+
+            </div>
+            <!-- // subject id -->
+
+            <!-- \\ experiment banner -->
+            <div class="id-card__banner">
+
+            </div>
+            <!-- // experiment banner -->
+
+            <!-- \\ details -->
+            <div class="id-card__details">
+              <div class="id-card__detail">
+                <span class="id-card__detail-label">ID Number</span>
+                <span class="id-card__detail-value" id="id-card-ID">{{member.memberId}}</span>
+              </div>
+              <div class="id-card__detail">
+                <span class="id-card__detail-label">Name</span>
+                <span class="id-card__detail-value" id="id-card-name">{{member.fullName}}</span>
+              </div>
+              <div class="id-card__detail">
+                <span class="id-card__detail-label">Membership Type</span>
+                <span class="id-card__detail-value" id="id-card-membership-type">{{member.membershipType}}</span>
+              </div>
+              <div class="id-card__detail">
+                <span class="id-card__detail-label">Moblie Number</span>
+                <span class="id-card__detail-value">{{member.phoneNumber}}</span>
+              </div>
+              <div class="id-card__detail">
+                <span class="id-card__detail-label">Issued Date</span>
+                <span class="id-card__detail-value">{{member.lastPaid|date:"dd MMM yyyy"}}</span>
+              </div>
+              <div class="id-card__detail">
+                <span class="id-card__detail-label">Expired Date</span>
+                <span class="id-card__detail-value">{{member.expiredDate|date:"dd MMM yyyy"}}</span>
+              </div>
+
+            </div>
+            <!-- // details -->
+
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-6">
+        <h5>Back Side</h5>
+        <div id="id-card-backside" style="border: 1px solid #000; max-width: 360px;background-color: white;">
+          <div class="id-card-backside material-ui-shadow">
+
+            <!-- \\ mugshot -->
+            <img src="../../../../../assets/logo-transparent.png" alt="Profile" class="id-card-backside__image">
+
+
+            <!-- // details -->
+            <div class="id-card-backside__details">
+              <div class="id-card-backside__detail text-center">
+                <span class="id-card-backside__detail-label "> ABI-ZEER COMMUNITY MEMBERSHIP</span> <br />
+                <!-- <span class="id-card-backside__detail-label " >ASSOCIATION</span> -->
+              </div>
+
+              <div class="id-card-backside__detail mt-4">
+
+                <span class="id-card-backside__detail-value">Address: Equatorial Guinnea Road, Near Lem hotel </span>
+
+              </div>
+              <div class="id-card-backside__detail"><span class="id-card-backside__detail-value">P.o.Box: </span>
+              </div>
+              <div class="id-card-backside__detail"><span class="id-card-backside__detail-value">Tel. No.:
+                  +251-116-189275 </span></div>
+              <div class="id-card-backside__detail"><span class="id-card-backside__detail-value">Website:
+                  www.abizzer.org.et</span></div>
+              <div class="id-card-backside__detail"><span class="id-card-backside__detail-value">Email:
+                  <!-- info@emwa.org.et -->
+
+                </span></div>
+              <div class="id-card-backside__detail"><span class="id-card-backside__detail-value">Authorized Signature:
+                </span></div>
+
+
+
+
+            </div>
+            <div class="text-end">
+
+              <img src="../../../../../assets/Signiture.png" alt="Profile" class="id-card-backside2__image">
+            </div>
+            <div class="text-end">
+
+              <img src="../../../../../assets/stamp.png" alt="Profile" class="id-card-backside3__image">
+            </div>
+
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- // details -->
+
+
+    <div class="col-md-4 mt-4">
+      <button class=" btn btn-outline-success" id="download-button" (click)="generatePdf()">Download Id Card</button>
+
+    </div>
+  </div>

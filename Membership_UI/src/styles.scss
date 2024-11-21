@@ -40,6 +40,78 @@ File: style.css
 @import 'scss/style-preset.scss';
 
 // fonts
-@import url('scss/fonts/berry/berry-icons.css'); /** custom font icons - berry **/
+@import url('scss/fonts/berry/berry-icons.css');
+/** custom font icons - berry **/
 @import 'scss/fonts/tabler-icons.min.css';
 @import 'scss/fonts/phosphor/duotone/style.css';
+
+
+
+.custom-table {
+    font-family: Arial, sans-serif;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.custom-table thead th {
+    background-color: #3333339a;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+
+.custom-table tbody td {
+    padding: 10px;
+    text-align: center;
+}
+
+.custom-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.custom-table tbody tr:hover {
+    background-color: #e0e0e0;
+}
+
+
+.custom-modal-width .modal-dialog {
+    max-width: 1400px;
+    /* Adjust the width value as needed */
+}
+
+input.ng-invalid,
+select.ng-invalid,
+textarea.ng-invalid {
+    border: 1px solid red;
+}
+
+.custom-modal-width .modal-dialog {
+    width: 1200px;
+    /* Adjust the width value as needed */
+}
+
+.focus-green {
+    outline: green
+}
+
+.custom-modal-width .modal-dialog {
+    max-width: 1500px;
+    /* Adjust the width value as needed */
+}
+
+.larger-text {
+    font-size: 16px;
+    /* Adjust the font size as needed */
+}
+
+.btn-outline-primary {
+    --bs-btn-color: #09653a !important;
+    --bs-btn-border-color: #09653a !important;
+    -bs-btn-color: #09653a !important;
+    --bs-btn-border-color: #09653a !important;
+
+    --bs-btn-hover-bg: #09653a !important;
+}

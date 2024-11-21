@@ -1,50 +1,82 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent } from './theme/layout/admin/admin.component';
-import { GuestComponent } from './theme/layout/guest/guest.component';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { AdminComponent } from "./theme/layout/admin/admin.component";
+import { GuestComponent } from "./theme/layout/guest/guest.component";
+import { AuthGuard } from "./auth/auth.guard";
+import { MembersDashboardComponent } from "./membership/pages/members/members-dashboard/members-dashboard.component";
+import AdminDashbordComponent from "./membership/pages/admin-dashbord/admin-dashbord.component";
+import { LandingPageComponent } from "./membership/pages/landing-page/landing-page.component";
 
 const routes: Routes = [
   {
-    path: '',
-    component: AdminComponent,
-    children: [
-      {
-        path: '',
-        redirectTo: '/default',
-        pathMatch: 'full'
-      },
-      {
-        path: 'default',
-        loadComponent: () => import('./demo/default/default.component').then((c) => c.DefaultComponent)
-      },
-      {
-        path: 'typography',
-        loadComponent: () => import('./demo/elements/typography/typography.component')
-      },
-      {
-        path: 'color',
-        loadComponent: () => import('./demo/elements/element-color/element-color.component')
-      },
-      {
-        path: 'sample-page',
-        loadComponent: () => import('./demo/sample-page/sample-page.component')
-      }
-    ]
+    path: "",
+    component: LandingPageComponent,
   },
   {
-    path: '',
+    path: "",
+    canActivate: [AuthGuard],
+    component: AdminComponent,
+    children: [
+     
+
+      {
+        path: "admin-dashboard",
+        component: AdminDashbordComponent,
+      },
+      {
+        path: "member-dashboard",
+        component: MembersDashboardComponent,
+      },
+
+      {
+        path: "configuration",
+        loadChildren: () =>
+          import(
+            "./membership/pages/configuration/configuration-service.module"
+          ).then((m) => m.ConfigurationServiceModule),
+      },
+      {
+        path: "members",
+        loadChildren: () =>
+          import("./membership/pages/members/members.module").then(
+            (m) => m.MembersModule
+          ),
+      },
+      {
+        path: "reports",
+        loadChildren: () =>
+          import("./membership/pages/reports/reports.module").then(
+            (m) => m.ReportsModule
+          ),
+      },
+    ],
+  },
+
+  {
+    path: "on-construction",
+    //component: OnConstructionComponent,
+  },
+  {
+    path: "board-member-dashboard",
+    // component: BoardMemberDashbaordComponent,
+  },
+  {
+    path: "",
     component: GuestComponent,
     children: [
       {
-        path: 'guest',
-        loadChildren: () => import('./demo/pages/authentication/authentication.module').then((m) => m.AuthenticationModule)
-      }
-    ]
-  }
+        path: "auth",
+        loadChildren: () =>
+          import(
+            "./membership/pages/authentication/authentication.module"
+          ).then((m) => m.AuthenticationModule),
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

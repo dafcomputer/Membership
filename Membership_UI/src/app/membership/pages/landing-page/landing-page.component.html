@@ -1,0 +1,416 @@
+<!-- abizzer-landing.component.html -->
+<header class="fixed-top shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center">
+        <img src="assets/logo-transparent.png" height="60" alt="Abizzer Logo" />
+        <span class="ms-2 text-primary fw-bold fs-4">ABI-ZEER COMMUNITY</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <!-- navbar.component.html -->
+<div class="collapse navbar-collapse" id="navbarNav">
+  <ul class="navbar-nav ms-auto">
+    <li class="nav-item">
+      <a class="nav-link text-dark fw-medium hover-effect" href="#home">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark fw-medium hover-effect" href="#about">About Us</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark fw-medium hover-effect" href="#services">Services</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark fw-medium hover-effect" href="#membership">Membership</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark fw-medium hover-effect" href="#contact">Contact</a>
+    </li>
+    
+    <!-- Action Buttons -->
+    <li class="nav-item d-flex align-items-center">
+      <button class="btn btn-primary ms-2 rounded-pill shadow-sm" (click)="navigateToRegister()">
+        {{ 'NAV.BE_A_MEMBER' | translate }}
+      </button>
+      <a href="/auth/membership-login" class="btn btn-outline-primary ms-3 rounded-pill">
+        
+        {{ 'NAV.LOGIN' | translate }}
+      </a>
+    </li>
+    
+    <!-- Language Switcher -->
+    <li class="nav-item ms-3">
+      <div class="language-switcher">
+        <i class="bi bi-globe me-2"></i>
+        <a (click)="switchLanguage('en')"  class="lang-link">English</a>
+        <span class="separator">|&nbsp;</span>
+        <a (click)="switchLanguage('am')"  class="lang-link">አማርኛ</a>
+      </div>
+    </li>
+  </ul>
+</div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <!-- Enhanced Hero Section -->
+  <section id="home" class="hero-section position-relative overflow-hidden">
+    <div class="hero-background"></div>
+    <div class="container position-relative">
+      <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
+            aria-current="true"></button>
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        </div>
+
+        <div class="carousel-inner">
+          <!-- Slide 1 -->
+          <div class="carousel-item active">
+            <div class="row align-items-center min-vh-75">
+              <div class="col-lg-6 hero-content fade-in-left">
+                <h1 class="display-3 fw-bold text-gradient mb-3">
+                  Welcome to ABI-ZEER
+                  <span class="highlight-bar"></span>
+                </h1>
+                <p class="lead mb-4 text-secondary fw-medium">
+                  Empowering professionals through collaboration and growth.
+                  Join our community of innovators and leaders.
+                </p>
+                <div class="hero-buttons">
+                  <button class="btn btn-primary btn-lg pulse-btn" (click)="navigateToRegister()">
+                    Join Now
+                    <i class="fas fa-arrow-right ms-2"></i>
+                  </button>
+                  <button class="btn btn-outline-primary btn-lg ms-3">
+                    Learn More
+                    <i class="fas fa-info-circle ms-2"></i>
+                  </button>
+                </div>
+                <div class="hero-stats mt-4">
+                  <div class="stat-item">
+                    <span class="stat-number">10K+</span>
+                    <span class="stat-label">Members</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Events</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-number">95%</span>
+                    <span class="stat-label">Satisfaction</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 hero-image fade-in-right">
+                <div class="image-wrapper">
+                  <img src="assets/hero.jpg" class="img-fluid rounded-lg hero-img" alt="Hero Image">
+                  <div class="floating-card card-1">
+                    <i class="fas fa-users"></i>
+                    <span>Growing Community</span>
+                  </div>
+                  <div class="floating-card card-2">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Professional Growth</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-item">
+            <div class="row align-items-center min-vh-75">
+              <div class="col-lg-6 hero-content fade-in-left">
+                <h1 class="display-3 fw-bold text-gradient mb-3">
+                  Connect with Experts
+                  <span class="highlight-bar"></span>
+                </h1>
+                <p class="lead mb-4 text-secondary fw-medium">
+                  Access exclusive networking opportunities and learn from industry leaders.
+                  Build lasting professional relationships.
+                </p>
+                <div class="hero-buttons">
+                  <button class="btn btn-primary btn-lg pulse-btn" (click)="navigateToRegister()">
+                    Explore Now
+                    <i class="fas fa-compass ms-2"></i>
+                  </button>
+                  <button class="btn btn-outline-primary btn-lg ms-3">
+                    View Events
+                    <i class="fas fa-calendar ms-2"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-lg-6 hero-image fade-in-right">
+                <div class="image-wrapper">
+                  <img src="assets/hero2.jpg" class="img-fluid rounded-lg hero-img" alt="Community Image">
+                  <div class="floating-card card-1">
+                    <i class="fas fa-handshake"></i>
+                    <span>Expert Network</span>
+                  </div>
+                  <div class="floating-card card-2">
+                    <i class="fas fa-certificate"></i>
+                    <span>Certified Members</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="carousel-item">
+            <div class="row align-items-center min-vh-75">
+              <div class="col-lg-6 hero-content fade-in-left">
+                <h1 class="display-3 fw-bold text-gradient mb-3">
+                  Expand Your Network
+                  <span class="highlight-bar"></span>
+                </h1>
+                <p class="lead mb-4 text-secondary fw-medium">
+                  Transform your career through powerful connections and
+                  collaborative opportunities with industry pioneers.
+                </p>
+                <div class="hero-buttons">
+                  <button class="btn btn-primary btn-lg pulse-btn" (click)="navigateToRegister()">
+                    Join the Network
+                    <i class="fas fa-network-wired ms-2"></i>
+                  </button>
+                  <button class="btn btn-outline-primary btn-lg ms-3">
+                    Member Benefits
+                    <i class="fas fa-gift ms-2"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-lg-6 hero-image fade-in-right">
+                <div class="image-wrapper">
+                  <img src="assets/hero3.jpg" class="img-fluid rounded-lg hero-img" alt="Networking Image">
+                  <div class="floating-card card-1">
+                    <i class="fas fa-globe"></i>
+                    <span>Global Network</span>
+                  </div>
+                  <div class="floating-card card-2">
+                    <i class="fas fa-rocket"></i>
+                    <span>Career Growth</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Custom Carousel Controls -->
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- About Section -->
+  <section id="about" class="section-padding">
+    <div class="container">
+      <div class="section-header text-center mb-5">
+        <h2 class="fw-bold text-primary">About Us</h2>
+        <div class="divider mx-auto"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <img src="assets/logo-transparent.png" height="50" class="img-fluid rounded shadow-sm mb-4" alt="About Us">
+        </div>
+        <div class="col-md-6">
+          <h3 class="text-secondary">Our Story</h3>
+          <p>Abizzer is dedicated to fostering professional growth and excellence in our community. We bring together
+            industry leaders, experts, and ambitious professionals.</p>
+          <p>Abizzer is dedicated to fostering professional growth and excellence in our community. We bring together
+            industry leaders, experts, and ambitious professionals.
+            Abizzer is dedicated to fostering professional growth and excellence in our community. We bring together
+            industry leaders, experts, and ambitious professionals.
+          </p>
+          <p>Abizzer is dedicated to fostering professional growth and excellence in our community. We bring together
+            industry leaders, experts, and ambitious professionals.
+            Abizzer is dedicated to fostering professional growth and excellence in our community. We bring together
+            industry leaders, experts, and ambitious professionals.
+            Abizzer is dedicated to fostering professional growth and excellence in our community. We bring together
+            industry leaders, experts, and ambitious professionals.
+          </p>
+          <p>Abizzer is dedicated to fostering professional growth and excellence in our community. We bring together
+            industry leaders, experts, and ambitious professionals.</p>
+
+          <div class="row mt-4">
+            <div class="col-6">
+              <div class="stat-box bg-light text-center py-3 rounded shadow-sm">
+                <h4 class="text-primary fw-bold">1000+</h4>
+                <p class="text-muted">Active Members</p>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="stat-box bg-light text-center py-3 rounded shadow-sm">
+                <h4 class="text-primary fw-bold">50+</h4>
+                <p class="text-muted">Events per Year</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="section-padding bg-light">
+    <div class="container">
+      <div class="section-header text-center mb-5">
+        <h2 class="fw-bold text-primary">Our Services for Orphans</h2>
+        <div class="divider mx-auto"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="service-card text-center p-4 shadow-sm rounded bg-white">
+            <div class="icon-box mb-3">
+              <i class="ti ti-home fa-2x text-primary"></i>
+            </div>
+            <h4 class="fw-bold">Shelter</h4>
+            <p>Providing a safe and loving home for orphaned children.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-card text-center p-4 shadow-sm rounded bg-white">
+            <div class="icon-box mb-3">
+              <i class="ti ti-book fa-2x text-primary"></i>
+            </div>
+            <h4 class="fw-bold">Education</h4>
+            <p>Offering access to quality education and learning resources.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-card text-center p-4 shadow-sm rounded bg-white">
+            <div class="icon-box mb-3">
+              <i class="ti ti-heart fa-2x text-primary"></i>
+            </div>
+            <h4 class="fw-bold">Counseling</h4>
+            <p>Providing emotional and psychological support for orphans.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Membership Section -->
+  <section id="membership" class="section-padding">
+    <div class="container">
+      <div class="section-header text-center mb-5">
+        <h2 class="fw-bold text-primary">Membership Subscriptions</h2>
+        <div class="divider mx-auto"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="membership-card text-center shadow-sm p-4 rounded bg-light">
+            <h3 class="fw-bold">Weekly</h3>
+            <div class="price mb-3">50 ETB/week</div>
+            <ul class="benefits-list list-unstyled text-start px-4">
+              <li>Network Access</li>
+              <li>Monthly Newsletters</li>
+              <li>Event Discounts</li>
+            </ul>
+            <button class="btn btn-outline-primary mt-3" (click)="navigateToRegister()">Select Plan</button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="membership-card featured text-center shadow-lg p-4 rounded bg-white position-relative">
+            <div class="badge bg-primary text-white position-absolute top-0 start-50 translate-middle mt-4">Popular
+            </div>
+            <h3 class="fw-bold">Monthly</h3>
+            <div class="price mb-3">ETB100/month</div>
+            <ul class="benefits-list list-unstyled text-start px-4">
+              <li>All Basic Benefits</li>
+              <li>Training Access</li>
+              <li>Mentorship Program</li>
+              <li>Priority Support</li>
+            </ul>
+            <button class="btn btn-primary mt-3" (click)="navigateToRegister()">Select Plan</button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="membership-card text-center shadow-sm p-4 rounded bg-light">
+            <h3 class="fw-bold">Yearly</h3>
+            <div class="price mb-3">Contact Us</div>
+            <ul class="benefits-list list-unstyled text-start px-4">
+              <li>All Professional Benefits</li>
+              <li>Custom Solutions</li>
+              <li>Dedicated Support</li>
+              <li>Team Management</li>
+            </ul>
+            <button class="btn btn-outline-primary mt-3" (click)="contactSales()">Contact Sales</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section-padding bg-light">
+    <div class="container">
+      <div class="section-header text-center mb-5">
+        <h2 class="fw-bold text-primary">Contact Us</h2>
+        <div class="divider mx-auto"></div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="contact-card p-4 shadow-sm rounded bg-white">
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <input type="text" class="form-control" placeholder="Your Name" formControlName="name">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <input type="email" class="form-control" placeholder="Your Email" formControlName="email">
+                </div>
+              </div>
+              <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Subject" formControlName="subject">
+              </div>
+              <div class="mb-3">
+                <textarea class="form-control" rows="5" placeholder="Message" formControlName="message"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary w-100">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer bg-primary text-white pt-5 pb-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="assets/logo.jpg" style="border-radius: 50%;" height="100" alt="Abizzer Logo" class="mb-3">
+        <p>Empowering professionals through collaboration and growth.</p>
+      </div>
+      <div class="col-md-4">
+        <h5 class="text-white">Quick Links</h5>
+        <ul class="footer-links list-unstyled">
+          <li><a href="#home" class="text-white">Home</a></li>
+          <li><a href="#about" class="text-white">About Us</a></li>
+          <li><a href="#services" class="text-white">Services</a></li>
+          <li><a href="#membership" class="text-white">Membership</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5 class="text-white">Contact Info</h5>
+        <ul class="footer-contact list-unstyled">
+          <li><i class="fas fa-map-marker-alt"></i> 123 Business Street, City</li>
+          <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+          <li><i class="fas fa-envelope"></i> infoabizzer.com</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="bg-light">
+    <div class="text-center">
+      <p class="mb-0">&copy; 2024 Abizzer. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

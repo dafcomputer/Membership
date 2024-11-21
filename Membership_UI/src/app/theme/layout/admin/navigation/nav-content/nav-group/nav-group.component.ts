@@ -1,9 +1,10 @@
 // Angular import
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, NgZone, OnInit } from '@angular/core';
 
 // project import
 import { NavigationItem } from '../../navigation';
 import { Location, LocationStrategy } from '@angular/common';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-nav-group',
@@ -14,14 +15,22 @@ export class NavGroupComponent implements OnInit {
   // public props
   @Input() item!: NavigationItem;
 
+  userRole: string;
   // Constructor
   constructor(
+    private zone: NgZone,
     private location: Location,
-    private locationStrategy: LocationStrategy
+    private locationStrategy: LocationStrategy,
+    private userService: UserService
   ) {}
+
+  getCurrentUser() {
+    this.userRole = this.userService.getCurrentUser().role;
+  }
 
   // Life cycle events
   ngOnInit() {
+    this.getCurrentUser();
     // at reload time active and trigger link
     let current_url = this.location.path();
     const baseHref = this.locationStrategy.getBaseHref();

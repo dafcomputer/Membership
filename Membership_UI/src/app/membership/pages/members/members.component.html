@@ -1,0 +1,129 @@
+<div class="page-header ng-star-inserted">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title"><!----><!---->
+                    <h5 class="mb-2 ng-star-inserted"> Membership</h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a _>Members</a></li>
+                    <li class="breadcrumb-item ng-star-inserted">
+                        <a href="javascript:">
+                            List
+                        </a>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card">
+
+
+    <div class="col-md-12 p-4 ">
+        <div class="col">
+
+        </div>
+        <div class="col-md-12 text-end">
+
+
+            <span style="font-size: 18px;color:#3b2413"> Total Members: {{Members.length}}
+            </span>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-3 ">
+                <input type="text" placeholder="search ..." class="form-control" style="font-size: 18px;"
+                    [(ngModel)]="searchTerm" (input)="applyFilter()" placeholder="Search">
+            </div>
+
+
+        </div>
+        <div class="row mt-2">
+            <div class="col-12 text-end" *ngIf="user.role.includes('SuperAdmin')">
+                <button class="btn btn-sm btn-outline-success text-end" (click)="file.click()"><i
+                        class="bi bi-file-excel"></i> Import from Excel </button>
+
+                &nbsp; <button class="btn btn-sm btn-outline-primary text-end" (click)="RegisterMember()"><i
+                        class="bi bi-plust"></i> Register </button>
+                <input type="file" accept=".xlsx, .xls" #file hidden (change)="onFileSelected($event)" />
+            </div>
+        </div>
+
+
+
+        <div class="table-responsive mt-3">
+            <table class="custom-table ">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Member ID</th>
+                        <th>Phone Number</th>
+                        <th>Membership Type</th>
+                        <th>Chapter</th>
+                        <th>Gender</th>
+                        <th>Payment Status</th>
+                        <th>Last Paid</th>
+                        <th>Expired Date</th>
+                        <th *ngIf="user.role.includes('SuperAdmin')">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of paginatedMembers; let i = index" class="align-middle text-center">
+                        <td class="d-flex align-items-center">
+                            <img [src]="item.imagePath&&  getImagePath(item.imagePath)" alt="Member Photo"
+                                style="height: 40px; width: 40px; border-radius: 50%; margin-right: 10px;" />
+                            {{ item.fullName }}
+                        </td>
+                        <td>{{ item.memberId }}</td>
+                        <td>{{ item.phoneNumber }}</td>
+                        <td>{{ item.membershipType }}</td>
+                        <td>{{ item.region }}</td>
+                        <td>{{ item.gender }}</td>
+                        <td>
+                            <span *ngIf="item.paymentStatus === 'PAID'" class="badge bg-success rounded-pill">
+                                {{ item.paymentStatus }}
+                            </span>
+                            <span *ngIf="item.paymentStatus === 'PENDING'" class="badge bg-warning rounded-pill">
+                                {{ item.paymentStatus }}
+                            </span>
+                            <span *ngIf="item.paymentStatus === 'EXPIRED'" class="badge bg-danger rounded-pill">
+                                {{ item.paymentStatus }}
+                            </span>
+                        </td>
+                        <td>{{ item.lastPaid | date: "dd MMM yyyy" }}</td>
+                        <td>{{ item.expiredDate | date: "dd MMM yyyy" }}</td>
+                        <td *ngIf="user.role.includes('SuperAdmin')">
+                            <div class="row">
+                                <div class="col-4">
+                                    <button class="btn btn-outline-primary btn-sm" (click)="goToDetail(item)">
+                                        <i class="ti ti-eye"></i>
+                                    </button>
+
+                                </div>
+                                <div class="col-4">
+                                    <button class="btn btn-outline-danger btn-sm ms-2"
+                                        (click)="DeleteMember(item.id)"><i class="ti ti-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Optional pagination controls -->
+            <div class="d-flex justify-content-center mt-3">
+                <!-- Pagination component here if needed -->
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+</div>

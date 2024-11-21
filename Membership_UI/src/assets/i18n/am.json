@@ -1,0 +1,11 @@
+{
+    "NAV": {
+        "BE_A_MEMBER": "አባል ንደብለይ",
+        "LOGIN": "ግባ"
+    },
+    "SERVICES": {
+        "SHELTER": "መኖሪያ",
+        "EDUCATION": "ትምህርት",
+        "COUNSELING": "አስተዳደር"
+    }
+}

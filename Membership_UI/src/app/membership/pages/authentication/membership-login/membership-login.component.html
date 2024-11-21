@@ -1,0 +1,70 @@
+<div class="auth-main">
+  <div class="auth-wrapper v3 row justify-content-center align-items-center">
+    
+    <!-- Form Section -->
+    <div class="auth-form col-lg-7 col-md-7 col-sm-10">
+      <div class="card shadow-lg border-0 rounded-lg p-4">
+        <div class="card-body">
+          <!-- Logo -->
+          <a href="#" class="d-flex justify-content-center mb-4">
+            <img src="../../../../../assets/logo-transparent.png" height="100" class="logo-image" alt="Logo" />
+          </a>
+
+          <!-- Header -->
+          <div class="text-center">
+            <h2 class="text-primary mb-3 display-6"><b>Welcome Back</b></h2>
+            <p class="fs-5 text-muted">Enter your Membership ID to continue</p>
+          </div>
+
+          <!-- Form -->
+          <form [formGroup]="loginForm" class="mt-4">
+            <div class="form-floating mb-4">
+              <input type="text" class="form-control form-control-lg " id="floatingInput"
+                formControlName="userName" placeholder="Membership ID" />
+              <label for="floatingInput">Membership ID</label>
+            </div>
+
+            <div class="d-grid mt-4">
+              <button type="submit" (click)="login()" class="btn btn-primary btn-lg  shadow">Sign In</button>
+            </div>
+
+            <hr class="my-4" />
+            <p class="text-left">
+              Don’t have an account?
+              <button type="button" class="btn btn-link text-decoration-none text-primary fw-bold" (click)="register()">
+                Register Now!
+              </button>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info Section (Tip) -->
+    <div class="col-lg-4 col-md-5 col-sm-10 mt-md-0 mt-4">
+      <div class="member-info p-4 bg-light border rounded-lg shadow-sm">
+        <h5 class="text-secondary mb-3">💡 Join the ABI-ZEER Membership</h5>
+        <p class="text-muted mb-3" style="font-size: 0.9rem;">
+          Becoming a member offers exclusive benefits tailored for midwifery professionals:
+        </p>
+
+        <ul class="list-unstyled text-muted" style="font-size: 0.85rem;">
+          <li class="mb-2">
+            <span class="fw-bold text-dark">1. Quick Sign Up:</span> Join in just a few clicks.
+          </li>
+          <li class="mb-2">
+            <span class="fw-bold text-dark">2. Unlock Resources:</span> Access exclusive tools and content.
+          </li>
+          <li class="mb-2">
+            <span class="fw-bold text-dark">3. Connect with Peers:</span> Network with industry professionals.
+          </li>
+          <li class="mb-2">
+            <span class="fw-bold text-dark">4. Receive Guidance:</span> Get tailored support and advice.
+          </li>
+        </ul>
+        <!-- <button class="btn btn-outline-primary btn-sm  mt-2">Learn More</button> -->
+      </div>
+    </div>
+
+  </div>
+</div>

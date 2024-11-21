@@ -1,0 +1,77 @@
+<app-celebration *ngIf="member&&member.isBirthDate" [memberName]="member&&member.fullName.split(' ')[0]" />
+
+<div class="row">
+    <div class="col-xl-4 col-md-6">
+        <div class="card bg-secondary-dark dashnum-card text-white overflow-hidden">
+            <span class="round small"></span>
+            <span class="round big"></span>
+            <div class="card-body">
+                <div class="row">
+                </div>
+                <span class="text-white d-block fs-1 fw-bold my-2">{{member&&member.membershipType.toUpperCase()}} <i
+                        class="ti ti-user opacity-50"></i></span>
+                <p class="mb-0 opacity-50">Membership Type </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-md-6">
+        <div class="card bg-white dashnum-card  overflow-hidden">
+            <span class="round small"></span>
+            <span class="round big"></span>
+            <div class="card-body">
+                <div class="row">
+                </div>
+                <span class="text-secondary d-block fs-1 fw-bold my-2">{{member&&member.paymentStatus}} <i
+                        class="ti ti-credit-card opacity-50"></i></span>
+                <p class="mb-0 opacity-50">Membership Status</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-md-12">
+        <div class="card bg-primary-dark dashnum-card dashnum-card-small text-white overflow-hidden">
+            <span class="round bg-primary small"></span>
+            <span class="round bg-primary big"></span>
+            <div class="card-body p-3">
+                <div class="d-flex align-items-center">
+                    <div class="avtar">
+                        <i class="text-white ti ti-location"></i>
+                    </div>
+                    <div class="ms-2">
+                        <h4 class="text-white mb-1" *ngIf="member&&member.region">{{member&&member.region}} -
+                            {{member&&member.zone}} - {{member&&member.woreda}}</h4>
+                        <h4 class="text-white mb-1" *ngIf="member&&!member.region">Foreign</h4>
+
+                        <p class="mb-0 opacity-50 text-sm">Location</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card bg-light-dangerdashnum-card dashnum-card-small overflow-hidden">
+            <span class="round bg-warning small"></span>
+            <span class="round bg-warning big"></span>
+            <div class="card-body p-3">
+                <div class="d-flex align-items-center">
+                    <div class="avtar bg-light-warning">
+                        <i class="text-warning ti ti-calendar"></i>
+                    </div>
+                    <div class="ms-2">
+                        <h4 class="mb-1"> {{member&&member.expiredDate|date:"dd MMM YYY"}} </h4>
+                        <span class="text-end" style="color: red;">{{daysLeft>0?daysLeft:(-1*daysLeft)}}
+                            {{daysLeft>0?'Days Left':'Days Passed'}}</span>
+                        <p class="mb-0 opacity-50 text-sm">Expired Date</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-xl-9">
+        <app-generate-id-card *ngIf="member" [member]="member"></app-generate-id-card>
+    </div>
+
+
+
+</div>

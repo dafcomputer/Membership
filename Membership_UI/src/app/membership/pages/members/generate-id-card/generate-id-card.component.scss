@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700');
+
+body {
+  background: #e2e1e0;
+  margin: 0 auto;
+  padding: 12vmin 10vmin;
+  max-width: 50em;
+  line-height: 1.5em;
+  font-family: 'PT Sans';
+  word-wrap: break-word;
+}
+
+#id-card {
+  display: inline-block;
+  float: left;
+  margin-right: 2em;
+  
+}
+
+.id-card-backside{
+  width: 100%;
+  height: 240px;
+  background: #ffffff;
+  padding: 10px;
+  position: relative;
+
+  &__image{
+   
+    width: 80px;
+    height: 80px;
+    border-right: 4px solid rgb(58 35 19);
+    position:absolute;
+  }
+  &__details {
+    
+    padding-left:85px ;
+    font-size: 8pt;
+    
+    display: inline-block;
+    
+  
+  }
+  
+  &__detail {
+    height: 20px;
+    
+    padding-bottom: 9px;
+    
+      
+    
+  }
+  
+  &__detail-label {
+    line-height: 1;
+    font-size: 10pt;
+    color: rgb(58 35 19);
+    font-weight: bold;
+    border-bottom: 1px solid #eeee;
+  }
+
+}
+
+.id-card {
+  width: 360px;
+  height: 240px;
+  background: #ffffff;
+  padding: 10px;
+  position: relative;
+  
+  &__mugshot {
+    position: absolute;
+    right: 0px;
+    
+    width: 100px;
+    height: 100px;
+    border-left: 4px solid rgb(58 35 19);
+    background: #ffffff;
+    
+    img {
+      width: 90px;
+      height: 90px;
+    }
+  }
+
+  &__qrcode {
+    position: absolute;
+    
+    right: 10px;
+    top: 130px;  
+  }
+  
+  &__logo {
+    width: 200px;
+    img {
+        width: 60px;
+        height: 60px;
+      }
+  }
+  
+  &__subject-id {
+    position: absolute;
+    top: 54px;
+    left: 130px;
+    
+    font-family: monospace;
+    font-size: 14pt;
+    transform: rotate(-4deg);
+  }
+  
+  &__banner {
+    height: 10pt;
+    background: rgb(58 35 19);
+    margin-top: 10px;
+    margin-left: -10px;
+    padding-left: 12px;
+  }
+  
+  &__banner-text {
+    color: #ffffff;
+    font-size: 8pt;
+    letter-spacing: 2px;
+    line-height: 0;
+    position: relative;
+    top: -6px;
+  }
+  
+  &__details {
+    //padding-top: 5px;
+    font-size: 8pt;
+    line-height: 4;
+    text-transform: uppercase;
+    width: 60%;
+    display: inline-block;
+    
+    &--short {
+      float: right;
+      margin-left: 30px;
+      width: 100px;
+    }
+  }
+  
+  &__detail {
+    height: 20px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    & + & {
+      border-bottom: 1px solid #eeee;
+    }
+  }
+  
+  &__detail-label {
+    color: #333;
+    font-weight: bold;
+    
+    &:after {
+      content: ' - ';
+      font-weight: 'bold';
+    }
+  }
+}
+
+.logo {
+  &__big {
+    font-size: 24pt;
+    font-weight: bold;
+    line-height: 1.3;
+    letter-spacing: 4px;
+  }
+  
+  &__small {
+    font-size: 8pt;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    left: 75px;
+    color: rgb(58 35 19);
+  }
+}
+
+
+.id-form {
+  
+  &__row {
+    padding-bottom: 8px;
+    
+    &--inline {
+      width: 10em;
+      padding-right: 1em;
+      padding-bottom: 1em;
+      display: inline-block;
+    }
+  }
+  
+  &__label {
+    font-size: 8pt;
+    line-height: 8pt;
+  }
+  
+  &__input {
+  }
+}
+
+.material-ui-shadow {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.material-ui-shadow:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.id-card-backside2{
+  width: 460px;
+  height: 240px;
+  background: #ffffff;
+  padding: 10px;
+  position: relative;
+
+  &__image{
+   
+    margin-top: 4px;
+    width: 120px;
+    height: 64px;
+    margin-right: 10px;
+  }
+}
+.id-card-backside3{
+  width: 460px;
+  height: 240px;
+  background: #ffffff;
+  padding: 10px;
+  position: relative;
+
+  &__image{
+   
+    margin-top: -240px;
+    margin-right: -8px;
+    width: 130px;
+    height: 130px;
+    opacity: 0.5;
+  }
+}
+
+@media print {
+  /* Define print-specific styles here */
+  body {
+    font-size: 12pt;
+    margin: 0;
+  }
+}

@@ -1,15 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 export interface NavigationItem {
   id: string;
   title: string;
-  type: 'item' | 'collapse' | 'group';
+  type: "item" | "collapse" | "group";
   icon?: string;
   url?: string;
   classes?: string;
   external?: boolean;
   target?: boolean;
   breadcrumbs?: boolean;
+  role: string;
   children?: Navigation[];
 }
 
@@ -18,114 +19,147 @@ export interface Navigation extends NavigationItem {
 }
 const NavigationItems = [
   {
-    id: 'dashboard',
-    title: 'Dashboard',
-    type: 'group',
-    icon: 'icon-navigation',
+    id: "dashboard",
+    title: "Dashboard",
+    type: "group",
+    icon: "icon-navigation",
     children: [
       {
-        id: 'default',
-        title: 'Dashboard',
-        type: 'item',
-        classes: 'nav-item',
-        url: '/default',
-        icon: 'ti ti-dashboard',
-        breadcrumbs: false
-      }
-    ]
+        id: "default",
+        title: "Admin-Dashboard",
+        type: "item",
+        classes: "nav-item",
+        role: ["Admin", "SuperAdmin", "RegionAdmin"],
+        url: "/admin-dashboard",
+        icon: "ti ti-dashboard",
+        breadcrumbs: false,
+      },
+      {
+        id: "default",
+        title: "Member-Dashboard",
+        type: "item",
+        classes: "nav-item",
+        role: ["Member"],
+        url: "/member-dashboard",
+        icon: "ti ti-dashboard",
+        breadcrumbs: false,
+      },
+    ],
   },
   {
-    id: 'page',
-    title: 'Pages',
-    type: 'group',
-    icon: 'icon-navigation',
+    id: "page2",
+    title: "Membership",
+    type: "group",
+    icon: "icon-navigation",
     children: [
       {
-        id: 'Authentication',
-        title: 'Authentication',
-        type: 'collapse',
-        icon: 'ti ti-key',
+        id: "profile",
+        title: "Profile",
+        type: "item",
+        role: ["Member"],
+        icon: "ti ti-user-check",
+        url: "/members/member-profile",
+        breadcrumbs: false,
+      },
+      {
+        id: "announcment",
+        title: "Announcment",
+        type: "item",
+        role: ["Member"],
+        icon: "ti ti-bookmark",
+        url: "/members/member-announcment",
+        breadcrumbs: false,
+      },
+      {
+        id: "Events",
+        title: "Events",
+        type: "item",
+        role: ["Member"],
+        icon: "ti ti-link",
+        url: "/members/member-course",
+        breadcrumbs: false,
+      },
+
+      {
+        id: "data",
+        title: "Members",
+        type: "item",
+        role: ["Admin", "SuperAdmin"],
+        icon: "ti ti-users",
+        url: "/members/List",
+        breadcrumbs: false,
+      },
+      {
+        id: "data",
+        title: "Message Management",
+        type: "item",
+        role: ["Admin", "SuperAdmin"],
+        icon: "ti ti-message",
+        url: "/members/messages",
+        breadcrumbs: false,
+      },
+      {
+        id: "requestd",
+        title: "Requested Id Cards",
+        type: "item",
+        role: ["Admin", "SuperAdmin"],
+        icon: "ti ti-layout",
+        url: "/members/idcard",
+        breadcrumbs: false,
+      },
+      {
+        id: "Authentication",
+        title: "Reports",
+        type: "collapse",
+        role: ["Admin", "SuperAdmin", "RegionAdmin"],
+        icon: "ti ti-book",
         children: [
           {
-            id: 'login',
-            title: 'Login',
-            type: 'item',
-            url: '/guest/login',
-            target: true,
-            breadcrumbs: false
+            id: "data",
+            title: "Membership Report ",
+            type: "item",
+            role: ["Admin", "SuperAdmin", "RegionAdmin"],
+            url: "/reports/membership-report",
+            breadcrumbs: false,
           },
           {
-            id: 'register',
-            title: 'Register',
-            type: 'item',
-            url: '/guest/register',
-            target: true,
-            breadcrumbs: false
-          }
-        ]
-      }
-    ]
+            id: "total-revune",
+            title: "Total Revenue",
+            type: "item",
+            role: ["Admin", "SuperAdmin", "RegionAdmin"],
+            url: "/reports/total-revenue",
+            breadcrumbs: false,
+          },
+        ],
+      },
+      {
+        id: "Authentication",
+        title: "Configuration",
+        type: "collapse",
+        role: ["Admin", "SuperAdmin"],
+        icon: "ti ti-settings",
+        children: [
+          {
+            id: "data",
+            title: "Membership Types ",
+            type: "item",
+            role: ["Admin", "SuperAdmin"],
+            url: "/configuration/membership-types",
+            breadcrumbs: false,
+          },
+
+          {
+            id: "data",
+            title: "Location Settings",
+            type: "item",
+            role: ["Admin", "SuperAdmin"],
+            url: "/configuration/location-setting",
+            breadcrumbs: false,
+          },
+        ],
+      },
+    ],
   },
-  {
-    id: 'elements',
-    title: 'Elements',
-    type: 'group',
-    icon: 'icon-navigation',
-    children: [
-      {
-        id: 'typography',
-        title: 'Typography',
-        type: 'item',
-        classes: 'nav-item',
-        url: '/typography',
-        icon: 'ti ti-typography'
-      },
-      {
-        id: 'color',
-        title: 'Colors',
-        type: 'item',
-        classes: 'nav-item',
-        url: '/color',
-        icon: 'ti ti-brush'
-      },
-      {
-        id: 'tabler',
-        title: 'Tabler',
-        type: 'item',
-        classes: 'nav-item',
-        url: 'https://tabler-icons.io/',
-        icon: 'ti ti-plant-2',
-        target: true,
-        external: true
-      }
-    ]
-  },
-  {
-    id: 'other',
-    title: 'Other',
-    type: 'group',
-    icon: 'icon-navigation',
-    children: [
-      {
-        id: 'sample-page',
-        title: 'Sample Page',
-        type: 'item',
-        url: '/sample-page',
-        classes: 'nav-item',
-        icon: 'ti ti-brand-chrome'
-      },
-      {
-        id: 'document',
-        title: 'Document',
-        type: 'item',
-        classes: 'nav-item',
-        url: 'https://codedthemes.gitbook.io/berry-angular/',
-        icon: 'ti ti-vocabulary',
-        target: true,
-        external: true
-      }
-    ]
-  }
 ];
 
 @Injectable()

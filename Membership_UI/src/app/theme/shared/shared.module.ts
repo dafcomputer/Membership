@@ -7,11 +7,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CardComponent } from './components/card/card.component';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 
-import { SpinnerComponent } from './components/spinner/spinner.component';
+
 import { NgScrollbarModule } from 'ngx-scrollbar';
 
 // bootstrap import
 import { NgbDropdownModule, NgbNavModule, NgbModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import { SpinnerComponent } from 'src/app/components/spinner/spinner.component';
 
 @NgModule({
   imports: [

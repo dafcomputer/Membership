@@ -1,0 +1,48 @@
+<div class=" card ">
+    <div class="modal-header">
+        <h5 class="modal-title">Add Message
+
+        </h5>
+        <button type="button" class="btn-close" id="ModalClose" (click)="closeModal()" data-bs-dismiss="modal"
+            aria-label="Close"></button>
+    </div>
+
+    <div class="card">
+
+        <div class="card p-4">
+
+            <form [formGroup]="messageForm" >
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <textarea id="content" formControlName="content" class="form-control"
+                                placeholder="Enter message content" rows="5"></textarea>
+
+                            <label for="content">Message Content</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <select id="messageType" formControlName="messageType" class="form-control">
+                                <option value="" disabled>Select Message Type</option>
+                                <option *ngFor="let type of messageTypes" [value]="type.code">
+                                    {{ type.value }}
+                                </option>
+                            </select>
+
+                            <label for="messageType">Message Type</label>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+            <button type="submit" class="btn btn-primary" [disabled]="messageForm.invalid" (click)="submitMessage()">
+                Add Message
+            </button>
+
+        </div>
