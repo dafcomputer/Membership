@@ -34,6 +34,9 @@ namespace MembershipInfrustructure.Model.Users
         public IDCARDSTATUS IdCardStatus { get; set; }
 
         public bool IsBirthDate { get; set; }
+        
+        
+        public string? ChatId { get; set; }
 
 
 

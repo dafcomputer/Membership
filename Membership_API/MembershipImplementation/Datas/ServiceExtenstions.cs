@@ -11,8 +11,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MembershipImplementation.Interfaces.Message;
+using MembershipImplementation.Interfaces.Telegram;
 using MembershipImplementation.Interfaces.Users;
 using MembershipImplementation.Services.Message;
+using MembershipImplementation.Services.Telegram;
 using MembershipImplementation.Services.Users;
 
 
@@ -34,6 +36,8 @@ namespace MembershipImplementation.Datas
 
             services.AddScoped<ICompanyProfileService, CompanyProfileService>();
             services.AddScoped<IContactService, ConctactUsService>();
+
+            services.AddScoped<ITelegramService, TelegramService>();
 
             #region             
             services.AddScoped<IRegionService, RegionService>();

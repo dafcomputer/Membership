@@ -96,6 +96,7 @@ namespace Implementation.Services.Authentication
                 new Claim("isExpired", false.ToString()),
                 new Claim("regionId", regionId),
                 new Claim("region", regionName),
+             
                 new Claim(_options.ClaimsIdentity.RoleClaimType, roles)
             });
 
@@ -116,6 +117,8 @@ namespace Implementation.Services.Authentication
                         me.Id,
                         me.FullName,
                         me.IsProfileCompleted,
+                        me.ChatId,
+                        
                         LatestPayment = _dbContext.MemberPayments
                             .Where(p => p.MemberId == me.Id)
                             .OrderByDescending(p => p.LastPaid)
@@ -136,6 +139,7 @@ namespace Implementation.Services.Authentication
             new Claim("photo", ""),
             new Claim("isProfileCompleted", member.IsProfileCompleted.ToString()),
             new Claim("isExpired", isExpired.ToString()),
+            new Claim("chat_Id",member.ChatId),
             new Claim(_options.ClaimsIdentity.RoleClaimType, "Member")
         });
 

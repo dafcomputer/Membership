@@ -23,5 +23,7 @@ public enum MessageType
 {
     Both,
     Email, 
-    SMS
+    SMS,
+    Telegram,
+    WhatsApp,
 }
