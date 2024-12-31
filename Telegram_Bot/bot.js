@@ -28,9 +28,8 @@ bot.onText(/\/start (\S+)/, async (msg, match) => {
   );
 
   try {
-    // Log the values being sent for debugging purposes
-    console.log("User ID:", userId);
-    console.log("Chat ID:", chatId);
+    
+    
 
     // Send chat ID to your backend to link with the user
     const response = await axiosInstance.post(
