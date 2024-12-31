@@ -14,6 +14,8 @@ export interface UserView {
   isExpired:string;
   regionId? : string
   region?:string
+  chat_Id?:string
+
 }
 export interface ChangePasswordModel {
   UserId: string;

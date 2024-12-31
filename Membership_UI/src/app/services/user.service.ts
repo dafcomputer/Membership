@@ -90,6 +90,7 @@ export class UserService {
       isExpired: payLoad.isExpired,
       regionId: payLoad.regionId,
       region: payLoad.region,
+      chat_Id: payLoad.chat_Id
     };
     return user;
   }

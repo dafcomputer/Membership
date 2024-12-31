@@ -33,11 +33,13 @@
                         <div class="row mt-2">
                             <div class="col-md-4 col-12">
                                 <div class="form-floating mb-3">
-                                    <select class="form-control" #type (change)="getMembershipTypes(type.value)">
+                                    <select class="form-control" #category (change)="getMembershipTypes(category.value)">
                                         <option></option>
-                                        <option value="ABI-ZEER COMMUNITY">ABI-ZEER COMMUNITY</option>
-                                        <option value="NONABI-ZEER COMMUNITY">NON ABI-ZEER COMMUNITY</option>
-                                    </select>
+                                        <option value=0>WEEKLY</option>
+                                        <option value=1>MONTHLY</option>
+                                        <option value=2>YEARLY</option>
+                    
+                                      </select>
                                     <label for="fullName">Membership Category</label>
                                 </div>
                             </div>
@@ -67,7 +69,7 @@
         </div>
         <div class="col-md-4 col-12 p-2">
             <div class="member-info text-center">
-                <img src="../../../../../assets/logo2.png" alt="Member Image" style="max-height: 150px;" class="img-fluid bounce-image">
+                <img src="../../../../../assets/logo-transparent.png" alt="Member Image" style="max-height: 150px;" class="img-fluid bounce-image">
                 <h2 class="text-secondary mt-2"><b>Ethipian ABI-ZEER COMMUNITY Association </b></h2>
                 <p class="text-center animated-paragraph">
                     Joining our ABI-ZEER COMMUNITY Membership is an <br />

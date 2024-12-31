@@ -73,5 +73,23 @@
     </div>
 
 
+    <div class="col-xl-3">
+        <div class="card p-4">
+            <div *ngIf="chatId; else connectTelegram">
+                <p>You have joined Telegram. Any notification will be sent to you.</p>
+                <button class="btn btn-success" disabled>Connected to Telegram</button>
+            </div>
+            <ng-template #connectTelegram>
+                <p>Be a Telegram member to receive notifications.</p>
+                <button class="btn btn-primary" (click)="connectTelegramc()">
+                    Connect with Telegram
+                </button>
+            </ng-template>
+        </div>
+    </div>
+
+
+
+
 
 </div>

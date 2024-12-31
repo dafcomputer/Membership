@@ -14,6 +14,7 @@ import {
   MoodleUpdateDto,
 } from "src/app/models/auth/membersDto";
 import { UserView } from "src/app/models/auth/userDto";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-members-dashboard",
@@ -28,8 +29,13 @@ export class MembersDashboardComponent implements OnInit {
   daysLeft = 0;
   viewPassword = false;
   password: string;
+  chatId: string | null = null;
+
   ngOnInit(): void {
     this.user = this.userService.getCurrentUser();
+    if (this.user.chat_Id) {
+      this.chatId = this.user.chat_Id;
+    }
     this.getMembers();
   }
 
@@ -48,6 +54,13 @@ export class MembersDashboardComponent implements OnInit {
         this.getDaysLeft(res.expiredDate);
       },
     });
+  }
+
+  connectTelegramc() {
+    const userId = this.user.loginId;
+    const token = environment.telegramBot;
+    const botLink = `https://t.me/${token}?start=${userId}`;
+    window.open(botLink, "_blank");
   }
 
   generateIdCard(viewId) {
@@ -88,8 +101,6 @@ export class MembersDashboardComponent implements OnInit {
 
     html2pdf().from(element).save("card.pdf");
   }
-
-  
 
   updateMember(updateMoodleDto: MoodleUpdateDto) {
     this.memberService.updateMoodleApi(updateMoodleDto).subscribe({

@@ -140,6 +140,7 @@ namespace Implementation.Services.Authentication
             new Claim("isProfileCompleted", member.IsProfileCompleted.ToString()),
             new Claim("isExpired", isExpired.ToString()),
             new Claim("chat_Id",member.ChatId),
+           
             new Claim(_options.ClaimsIdentity.RoleClaimType, "Member")
         });
 
