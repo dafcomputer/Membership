@@ -42,7 +42,7 @@ namespace MembershipImplementation.Interfaces.HRM
 
 
         Task<List<MemberRegionRevenueReportDto>> GetRegionRevenueReport();
-        Task<ResponseMessage> ImportMemberFormExcel(IFormFile ExcelFile);
+        Task<ResponseMessage<List<string>>> ImportMemberFormExcel(IFormFile ExcelFile);
         Task<ResponseMessage> DeleteMember(Guid MemberId);
         Task<ResponseMessage> GetExpiredDate(DateTime lastPaid, Guid membershipTypeId);
 

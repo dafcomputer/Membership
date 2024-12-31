@@ -29,6 +29,8 @@ import {
   ResponseMessage2,
   ResponseMessageData,
 } from "../models/ResponseMessage.Model";
+import { CompanyProfileGetDto } from "../models/configuration/ICompanyProfileDto";
+import { IContactUsDto } from "../models/configuration/IContactUsDto";
 
 @Injectable({
   providedIn: "root",
@@ -41,7 +43,6 @@ export class ConfigurationService {
     private sanitizer: DomSanitizer
   ) {}
 
- 
   //region
 
   getRegions() {
@@ -160,6 +161,33 @@ export class ConfigurationService {
     return this.http.delete<ResponseMessage>(
       this.baseUrl +
         `/Announcment/DeleteAnnouncment?AnnouncmentId=${AnnouncmentId}`
+    );
+  }
+
+  getCompanyProfile() {
+    return this.http.get<ResponseMessageData<CompanyProfileGetDto>>(
+      this.baseUrl + `/CompanyProfile/GetCompanyProfile`
+    );
+  }
+
+  updateCompanyProfile(fromData: FormData) {
+    return this.http.post<ResponseMessageData<string>>(
+      this.baseUrl + "/CompanyProfile/AddCompanyProfile",
+      fromData
+    );
+  }
+
+
+  getContactUsMessages() {
+    return this.http.get<ResponseMessageData<IContactUsDto[]>>(
+      this.baseUrl + `/ContactUs/GetContactUsMessages`
+    );
+  }
+
+  AddContactus(fromData: FormData) {
+    return this.http.post<ResponseMessageData<string>>(
+      this.baseUrl + "/ContactUs/AddContactUs",
+      fromData
     );
   }
 }

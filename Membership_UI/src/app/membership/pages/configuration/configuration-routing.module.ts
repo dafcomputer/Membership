@@ -6,6 +6,8 @@ import { LocationSettingComponent } from './location-setting/location-setting.co
 import { AnnouncmentComponent } from './announcment/announcment.component';
 
 import { EventDescriptionComponent } from './event-description/event-description.component';
+import { CompanyProfileComponent } from './company-profile/company-profile.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 const routes: Routes = [
   {
@@ -23,6 +25,16 @@ const routes: Routes = [
       {
         path: 'announcment',
         component: AnnouncmentComponent
+      },
+
+      {
+        path: 'company-profile',
+        component: CompanyProfileComponent
+      },
+
+      {
+        path: 'contact-us',
+        component: ContactUsComponent
       },
       {
         path:'event-detail/:eventId',

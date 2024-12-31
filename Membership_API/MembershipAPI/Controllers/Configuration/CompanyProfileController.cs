@@ -1,24 +1,35 @@
+using System.Net;
+using MembershipImplementation.DTOS.Configuration;
+using MembershipImplementation.Interfaces.Configuration;
+using Microsoft.AspNetCore.Mvc;
+
 namespace MembershipAPI.Controllers.Configuration;
 
-public class CompanyProfileController_ts
+
+[Route("api/[controller]/[action]")]
+[ApiController]
+public class CompanyProfileController :ControllerBase
 {
-    [Route("api/[controller]/[action]")]
-    [ApiController]
-    public class AnnouncmentController : ControllerBase
-    {
+        ICompanyProfileService _companyProfileService;
 
-        IAnnouncmentService _AnnouncmentService;
-
-        public AnnouncmentController(IAnnouncmentService AnnouncmentService)
+        public CompanyProfileController(ICompanyProfileService companyProfileService)
         {
-            _AnnouncmentService = AnnouncmentService;
+            _companyProfileService = companyProfileService;
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(AnnouncmentGetDto), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> GetAnnouncmentList()
+        [ProducesResponseType(typeof(CompanyProfileGetDto), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> GetCompanyProfile()
         {
-            return Ok(await _AnnouncmentService.GetAnnouncmentList());
+            return Ok(await _companyProfileService.GetCompanyProfile());
+        }
+        
+        
+        [HttpPost]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> AddCompanyProfile([FromForm] CompanyProfilePostDto companyProfileDto)
+        {
+            return Ok(await _companyProfileService.UpdateCompanyProfile(companyProfileDto));
         }
 
 }

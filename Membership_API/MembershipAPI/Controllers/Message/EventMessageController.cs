@@ -50,7 +50,7 @@ namespace MembershipAPI.Controllers.Message
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddEventMessageMember([FromBody] EventMessageMemberPostDto eventMessageMember)
+        public async Task<IActionResult> AddEventMessageMember(EventMessageMemberPostDto eventMessageMember)
         {
             var result = await _eventMessageService.AddEventMessageMember(eventMessageMember);
             if (result.Success)
@@ -60,7 +60,7 @@ namespace MembershipAPI.Controllers.Message
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetEventMessageMember([FromQuery] MessageStatus messageStatus, [FromQuery] Guid? eventMessageId)
+        public async Task<IActionResult> GetEventMessageMember([FromQuery] MessageStatus? messageStatus, [FromQuery] Guid? eventMessageId)
         {
             var result = await _eventMessageService.GetEventMessageMember(messageStatus, eventMessageId);
             if (result.Success)
@@ -73,6 +73,17 @@ namespace MembershipAPI.Controllers.Message
         public async Task<IActionResult> ChangeMessageStatus([FromBody] List<Guid> memberMessageIds)
         {
             var result = await _eventMessageService.ChangeMessageStatus(memberMessageIds);
+            if (result.Success)
+                return Ok(result);
+            
+            return BadRequest(result);
+        }
+        
+        
+        [HttpGet]
+        public async Task<IActionResult> GetUnsentMessages()
+        {
+            var result = await _eventMessageService.GetUnsentMessages();
             if (result.Success)
                 return Ok(result);
             

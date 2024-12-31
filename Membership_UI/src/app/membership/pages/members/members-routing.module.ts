@@ -6,6 +6,7 @@ import { MemberAnnouncmentsComponent } from "./member-announcments/member-announ
 import { MemberCourseComponent } from "./member-course/member-course.component";
 import { RequestedIdcardsComponent } from "./requested-idcards/requested-idcards.component";
 import { MessageListComponent } from "../Message/message-list/message-list.component";
+import { UnsentMessagesComponent } from "../Message/unsent-messages/unsent-messages.component";
 
 const routes: Routes = [
   {
@@ -35,6 +36,12 @@ const routes: Routes = [
         path: "messages",
         component: MessageListComponent,
       },
+      {
+        path: "unsent-messages",
+        component: UnsentMessagesComponent,
+      },
+
+      
     ],
   },
 ];

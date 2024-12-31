@@ -19,11 +19,11 @@ public class EventMessageService : IEventMessageService
 
     private readonly IGeneralConfigService _generalConfig;
 
-    public EventMessageService(ApplicationDbContext dbContext)
+    public EventMessageService(ApplicationDbContext dbContext, IEmailService emailService,IGeneralConfigService generalConfig)
     {
         _dbContext = dbContext;
-        _emailService = _emailService;
-        _generalConfig = _generalConfig; 
+        _emailService = emailService;
+        _generalConfig = generalConfig; 
     }
 
     public async Task<ResponseMessage<string>> AddEventMessage(EventMessagePostDto eventMessagePost)
@@ -113,6 +113,7 @@ public class EventMessageService : IEventMessageService
                     MessageId = x.Id,
                     MessageTypeGet = x.MessageType.ToString(),
                     MessageType = x.MessageType,
+                    Content = x.Content,
                     IsApproved = x.IsApproved
                 })
                 .ToListAsync();
@@ -131,13 +132,48 @@ public class EventMessageService : IEventMessageService
     }
 
 
-    public async Task<ResponseMessage<string>> AddEventMessageMember(EventMessageMemberPostDto eventMessageMemberPost)
+   public async Task<ResponseMessage<string>> AddEventMessageMember(EventMessageMemberPostDto eventMessageMemberPost)
+{
+    try
     {
-        try
+        var eventMessageMembers = new List<EventMessageMember>();
+
+        // If ForAllMembers is true, include all members
+        if (eventMessageMemberPost.ForAllMembers)
         {
-            if (eventMessageMemberPost.ForAllMembers)
+            eventMessageMembers = await _dbContext.Members
+                .Select(member => new EventMessageMember
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedDate = DateTime.UtcNow,
+                    MessageStatus = MessageStatus.Pending,
+                    EventMessageId = eventMessageMemberPost.EventMessageId,
+                    MemberId = member.Id,
+                    Rowstatus = EnumList.RowStatus.ACTIVE
+                })
+                .ToListAsync();
+        }
+        else
+        {
+            // Add members by MemberIds
+            if (eventMessageMemberPost.MemberIds != null && eventMessageMemberPost.MemberIds.Any())
             {
-                var eventMessageMembers = await _dbContext.Members
+                eventMessageMembers.AddRange(eventMessageMemberPost.MemberIds.Select(memberId => new EventMessageMember
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedDate = DateTime.UtcNow,
+                    MessageStatus = MessageStatus.Pending,
+                    EventMessageId = eventMessageMemberPost.EventMessageId,
+                    MemberId = memberId,
+                    Rowstatus = EnumList.RowStatus.ACTIVE
+                }));
+            }
+
+            // Add members by MembershipIds
+            if (eventMessageMemberPost.MembershipIds != null && eventMessageMemberPost.MembershipIds.Any())
+            {
+                var membersByMembership = await _dbContext.Members
+                    .Where(member => eventMessageMemberPost.MembershipIds.Contains(member.MembershipTypeId))
                     .Select(member => new EventMessageMember
                     {
                         Id = Guid.NewGuid(),
@@ -149,23 +185,30 @@ public class EventMessageService : IEventMessageService
                     })
                     .ToListAsync();
 
-                await _dbContext.EventMessageMembers.AddRangeAsync(eventMessageMembers);
-                await _dbContext.SaveChangesAsync();
+                eventMessageMembers.AddRange(membersByMembership);
             }
-
-            return new ResponseMessage<string>
-            {
-                Success = true,
-                Message = "Members message added successfully!"
-            };
         }
-        catch (Exception ex)
+
+        // Save event message members if any
+        if (eventMessageMembers.Any())
         {
-            return ExceptionHandler.HandleException<string>(ex);
+            await _dbContext.EventMessageMembers.AddRangeAsync(eventMessageMembers);
+            await _dbContext.SaveChangesAsync();
         }
-    }
 
-    public async Task<ResponseMessage<List<EventMessageMemberGetDto>>> GetEventMessageMember(MessageStatus messageStatus, Guid? eventMessageId)
+        return new ResponseMessage<string>
+        {
+            Success = true,
+            Message = "Member messages added successfully!"
+        };
+    }
+    catch (Exception ex)
+    {
+        return ExceptionHandler.HandleException<string>(ex);
+    }
+}
+
+    public async Task<ResponseMessage<List<EventMessageMemberGetDto>>> GetEventMessageMember(MessageStatus? messageStatus, Guid? eventMessageId)
     {
         try
         {
@@ -184,6 +227,7 @@ public class EventMessageService : IEventMessageService
                 .Select(x => new EventMessageMemberGetDto
                 {
                     EventMessageId = x.EventMessageId,
+                    EventMessageMemberId = x.Id.ToString(),
                     MessageStatus = x.MessageStatus,
                     MessageContent = x.EventMessage.Content,
                     MemberName = x.Member.FullName,
@@ -273,4 +317,44 @@ public class EventMessageService : IEventMessageService
     }
 }
 
+    public async Task<ResponseMessage<List<EventMessageMemberGetDto>>> GetUnsentMessages()
+    {
+        try
+        {
+            
+   
+
+            var messages = await _dbContext.EventMessageMembers
+                    .Include(x=>x.Member)
+                .Include(x => x.EventMessage)
+                .Where(x => x.MessageStatus == MessageStatus.Pending && x.EventMessage.IsApproved)
+                .OrderByDescending(x => x.CreatedDate)
+                .Select((x)=> new EventMessageMemberGetDto
+                {
+                    EventMessageMemberId = x.Id.ToString(),
+                    MemberName= x.Member.FullName,
+                    MemberPhoneNumber = x.Member.PhoneNumber,
+                    MessageContent = x.EventMessage.Content,
+                    MessageStatusGet =x.MessageStatus.ToString(),
+                    MessageTypeGet = x.EventMessage.MessageType.ToString(),
+                    
+                    
+                    
+                    
+                }).ToListAsync();
+
+
+            return new ResponseMessage<List<EventMessageMemberGetDto>>()
+            {
+                Success = true,
+                Data = messages
+            };
+
+
+        }
+        catch (Exception ex)
+        {
+            return ExceptionHandler.HandleException<List<EventMessageMemberGetDto>>(ex);
+        }
+    }
 }

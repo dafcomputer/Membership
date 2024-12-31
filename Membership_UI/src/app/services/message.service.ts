@@ -2,7 +2,12 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 import { environment } from "src/environments/environment";
-import { ImessageGetDto, IMessagePostDto } from "../membership/pages/Message/message-list/add-message/messageDto";
+import {
+  EventMessageMemberGetDto,
+  EventMessageMemberPostDto,
+  ImessageGetDto,
+  IMessagePostDto,
+} from "../membership/pages/Message/message-list/add-message/messageDto";
 import { ResponseMessageData } from "../models/ResponseMessage.Model";
 
 @Injectable({
@@ -20,9 +25,48 @@ export class EventMessageService {
     );
   }
 
+  updateMessage(fromData: IMessagePostDto) {
+    return this.http.put<ResponseMessageData<string>>(
+      this.baseUrl + "/EventMessages/UpdateEventMessage",
+      fromData
+    );
+  }
+
   getMessages(isApproved: boolean) {
     return this.http.get<ResponseMessageData<ImessageGetDto[]>>(
       this.baseUrl + `/EventMessages/GetEventMessage?isApproved=${isApproved}`
     );
   }
+
+
+
+
+  getUnsentMessages() {
+    return this.http.get<ResponseMessageData<EventMessageMemberGetDto[]>>(
+      this.baseUrl + `/EventMessages/GetUnsentMessages`
+    );
+  }
+
+
+  getMessageMembers(messageStatus: number, eventMessageId: string) {
+    return this.http.get<ResponseMessageData<EventMessageMemberGetDto[]>>(
+      this.baseUrl +
+        `/EventMessages/GetEventMessageMember?messageStatus=${messageStatus}&eventMessageId=${eventMessageId}`
+    );
+  }
+
+  addMessageMembers(eventMessageMemberPostDto : EventMessageMemberPostDto) {
+    return this.http.post<ResponseMessageData<string>>(
+      this.baseUrl +
+        `/EventMessages/AddEventMessageMember`,eventMessageMemberPostDto
+    );
+  }
+
+  changeMessageStatus(memberIds : string[]) {
+    return this.http.put<ResponseMessageData<string>>(
+      this.baseUrl +
+        `/EventMessages/ChangeMessageStatus`,memberIds
+    );
+  }
+  
 }

@@ -21,7 +21,7 @@ public class EventMessageMember : WithIdModel2
     
     public virtual EventMessage EventMessage { get; set; } 
     
-    public MessageStatus MessageStatus { get; set; }
+    public MessageStatus? MessageStatus { get; set; }
     
 }
 public enum MessageStatus

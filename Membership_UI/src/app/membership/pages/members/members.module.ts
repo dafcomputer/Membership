@@ -20,6 +20,8 @@ import { CelebrationComponent } from "./celebration/celebration.component";
 import { RegisterMembersAdminComponent } from "./register-members-admin/register-members-admin.component";
 import { MessageListComponent } from "../Message/message-list/message-list.component";
 import { AddMessageComponent } from "../Message/message-list/add-message/add-message.component";
+import { MessageDetailComponent } from "../Message/message-detail/message-detail.component";
+import { UnsentMessagesComponent } from "../Message/unsent-messages/unsent-messages.component";
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { AddMessageComponent } from "../Message/message-list/add-message/add-mes
     CelebrationComponent,
     RegisterMembersAdminComponent,
     MessageListComponent,
-    AddMessageComponent
+    AddMessageComponent,
+    MessageDetailComponent,
+    UnsentMessagesComponent
   ],
   imports: [
     CommonModule,

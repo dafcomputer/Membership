@@ -1,0 +1,16 @@
+/Users/oza/Developer/personal/DAF Computer/Membership/Membership_API/MembershipImplementation/bin/Release/net8.0/MembershipImplementation.deps.json
+/Users/oza/Developer/Personal/DAF Computer/Membership/Membership_API/MembershipImplementation/bin/Release/net8.0/MembershipImplementation.dll
+/Users/oza/Developer/Personal/DAF Computer/Membership/Membership_API/MembershipImplementation/bin/Release/net8.0/MembershipImplementation.pdb
+/Users/oza/Developer/Personal/DAF Computer/Membership/Membership_API/MembershipImplementation/bin/Release/net8.0/MembershipInfrustructure.dll
+/Users/oza/Developer/Personal/DAF Computer/Membership/Membership_API/MembershipImplementation/bin/Release/net8.0/MembershipInfrustructure.pdb
+/Users/oza/Developer/Personal/DAF Computer/Membership/Membership_API/MembershipImplementation/obj/Release/net8.0/MembershipImplementation.csproj.AssemblyReference.cache
+/Users/oza/Developer/Personal/DAF Computer/Membership/Membership_API/MembershipImplementation/obj/Release/net8.0/MembershipImplementation.GeneratedMSBuildEditorConfig.editorconfig
+/Users/oza/Developer/Personal/DAF Computer/Membership/Membership_API/MembershipImplementation/obj/Release/net8.0/MembershipImplementation.AssemblyInfoInputs.cache
+/Users/oza/Developer/Personal/DAF Computer/Membership/Membership_API/MembershipImplementation/obj/Release/net8.0/MembershipImplementation.AssemblyInfo.cs
+/Users/oza/Developer/Personal/DAF Computer/Membership/Membership_API/MembershipImplementation/obj/Release/net8.0/MembershipImplementation.csproj.CoreCompileInputs.cache
+/Users/oza/Developer/Personal/DAF Computer/Membership/Membership_API/MembershipImplementation/obj/Release/net8.0/MembershipImplementation.sourcelink.json
+/Users/oza/Developer/personal/DAF Computer/Membership/Membership_API/MembershipImplementation/obj/Release/net8.0/Membersh.3381815D.Up2Date
+/Users/oza/Developer/Personal/DAF Computer/Membership/Membership_API/MembershipImplementation/obj/Release/net8.0/MembershipImplementation.dll
+/Users/oza/Developer/Personal/DAF Computer/Membership/Membership_API/MembershipImplementation/obj/Release/net8.0/refint/MembershipImplementation.dll
+/Users/oza/Developer/Personal/DAF Computer/Membership/Membership_API/MembershipImplementation/obj/Release/net8.0/MembershipImplementation.pdb
+/Users/oza/Developer/personal/DAF Computer/Membership/Membership_API/MembershipImplementation/obj/Release/net8.0/ref/MembershipImplementation.dll

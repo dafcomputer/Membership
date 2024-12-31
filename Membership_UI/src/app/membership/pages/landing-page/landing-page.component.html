@@ -4,52 +4,52 @@
     <div class="container">
       <a class="navbar-brand d-flex align-items-center">
         <img src="assets/logo-transparent.png" height="60" alt="Abizzer Logo" />
-        <span class="ms-2 text-primary fw-bold fs-4">ABI-ZEER COMMUNITY</span>
+        <span class="ms-2 text-primary fw-bold fs-4"> {{ 'ABI-ZEER_COMMUNITY' | translate }}</span>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
-    <!-- navbar.component.html -->
-<div class="collapse navbar-collapse" id="navbarNav">
-  <ul class="navbar-nav ms-auto">
-    <li class="nav-item">
-      <a class="nav-link text-dark fw-medium hover-effect" href="#home">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-dark fw-medium hover-effect" href="#about">About Us</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-dark fw-medium hover-effect" href="#services">Services</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-dark fw-medium hover-effect" href="#membership">Membership</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-dark fw-medium hover-effect" href="#contact">Contact</a>
-    </li>
-    
-    <!-- Action Buttons -->
-    <li class="nav-item d-flex align-items-center">
-      <button class="btn btn-primary ms-2 rounded-pill shadow-sm" (click)="navigateToRegister()">
-        {{ 'NAV.BE_A_MEMBER' | translate }}
-      </button>
-      <a href="/auth/membership-login" class="btn btn-outline-primary ms-3 rounded-pill">
-        
-        {{ 'NAV.LOGIN' | translate }}
-      </a>
-    </li>
-    
-    <!-- Language Switcher -->
-    <li class="nav-item ms-3">
-      <div class="language-switcher">
-        <i class="bi bi-globe me-2"></i>
-        <a (click)="switchLanguage('en')"  class="lang-link">English</a>
-        <span class="separator">|&nbsp;</span>
-        <a (click)="switchLanguage('am')"  class="lang-link">አማርኛ</a>
+      <!-- navbar.component.html -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link text-dark fw-medium hover-effect" href="#home">{{ 'Home' | translate }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark fw-medium hover-effect" href="#about">{{ 'About_Us' | translate }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark fw-medium hover-effect" href="#services">{{ 'Services' | translate }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark fw-medium hover-effect" href="#membership">{{ 'Membership' | translate }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark fw-medium hover-effect" href="#contact">{{ 'Contact' | translate }}</a>
+          </li>
+
+          <!-- Action Buttons -->
+          <li class="nav-item d-flex align-items-center">
+            <button class="btn btn-primary ms-2 rounded-pill shadow-sm" (click)="navigateToRegister()">
+              {{ 'Be_a_Member' | translate }}
+            </button>
+            <a href="/auth/membership-login" class="btn btn-outline-primary ms-3 rounded-pill">
+
+              {{ 'Login' | translate }}
+            </a>
+          </li>
+
+          <!-- Language Switcher -->
+          <li class="nav-item ms-3">
+            <div class="language-switcher">
+              <i class="bi bi-globe me-2"></i>
+              <a (click)="switchLanguage('en')" class="lang-link">English</a>
+              <span class="separator">|&nbsp;</span>
+              <a (click)="switchLanguage('am')" class="lang-link">አማርኛ</a>
+            </div>
+          </li>
+        </ul>
       </div>
-    </li>
-  </ul>
-</div>
     </div>
   </nav>
 </header>
@@ -74,48 +74,54 @@
             <div class="row align-items-center min-vh-75">
               <div class="col-lg-6 hero-content fade-in-left">
                 <h1 class="display-3 fw-bold text-gradient mb-3">
-                  Welcome to ABI-ZEER
+                
+                  {{selectedLanguage=='en'? ((companyProfileDto&&companyProfileDto.title)|| "Welcome to ABI-ZEER"):((companyProfileDto&&companyProfileDto.localTitle)|| "ወደ ABI-ZEER እንኳን በደህና መጡ") }} 
+                          
                   <span class="highlight-bar"></span>
                 </h1>
                 <p class="lead mb-4 text-secondary fw-medium">
-                  Empowering professionals through collaboration and growth.
-                  Join our community of innovators and leaders.
+                  {{selectedLanguage=='en'? ((companyProfileDto&&companyProfileDto.description)|| "Empowering professionals through collaboration and growth. Join our community of innovators and leaders."):
+                  ((companyProfileDto&&companyProfileDto.localDescription)|| "ወደ ABI-ZEER እንኳን በደህና መጡ በትብብር እና በማደግ ባለሙያዎችን ማበረታታት. የፈጠራ ባለሙያዎች እና መሪዎች ማህበረሰባችንን ይቀላቀሉ።") }} 
                 </p>
                 <div class="hero-buttons">
                   <button class="btn btn-primary btn-lg pulse-btn" (click)="navigateToRegister()">
-                    Join Now
+                    {{'Join_Now'|translate}}
                     <i class="fas fa-arrow-right ms-2"></i>
                   </button>
                   <button class="btn btn-outline-primary btn-lg ms-3">
-                    Learn More
+                    {{'Learn_More'|translate}}
                     <i class="fas fa-info-circle ms-2"></i>
                   </button>
                 </div>
                 <div class="hero-stats mt-4">
                   <div class="stat-item">
-                    <span class="stat-number">10K+</span>
-                    <span class="stat-label">Members</span>
+                    <span class="stat-number">{{(companyProfileDto&&companyProfileDto.membersCount)||'1000'}}+</span>
+                    <span class="stat-label"> {{'Members'|translate}}</span>
                   </div>
                   <div class="stat-item">
-                    <span class="stat-number">50+</span>
-                    <span class="stat-label">Events</span>
+                    <span class="stat-number">{{(companyProfileDto&&companyProfileDto.eventsPerYear) || '100'}}+</span>
+                    <span class="stat-label"> {{'Events'|translate}}</span>
                   </div>
                   <div class="stat-item">
                     <span class="stat-number">95%</span>
-                    <span class="stat-label">Satisfaction</span>
+                    <span class="stat-label"> {{'Satisfaction'|translate}}</span>
                   </div>
                 </div>
               </div>
               <div class="col-lg-6 hero-image fade-in-right">
                 <div class="image-wrapper">
-                  <img src="assets/hero.jpg" class="img-fluid rounded-lg hero-img" alt="Hero Image">
+                  <img *ngIf="companyProfileDto"
+                    [src]="getImage(companyProfileDto&&companyProfileDto.dashboardImagePath)"
+                    class="img-fluid rounded-lg hero-img" alt="Hero Image">
+                    <img *ngIf="!companyProfileDto" src="../../../../assets/hero.jpg"
+                    height="50" class="img-fluid rounded shadow-sm mb-4" alt="About Us"/>
                   <div class="floating-card card-1">
                     <i class="fas fa-users"></i>
-                    <span>Growing Community</span>
+                    <span> {{'Growing_Community'|translate}}</span>
                   </div>
                   <div class="floating-card card-2">
                     <i class="fas fa-chart-line"></i>
-                    <span>Professional Growth</span>
+                    <span> {{'Professional_Growth'|translate}} </span>
                   </div>
                 </div>
               </div>
@@ -212,43 +218,73 @@
   <section id="about" class="section-padding">
     <div class="container">
       <div class="section-header text-center mb-5">
-        <h2 class="fw-bold text-primary">About Us</h2>
+        <h2 class="fw-bold text-primary">{{'About_Us'|translate}}</h2>
         <div class="divider mx-auto"></div>
       </div>
       <div class="row">
         <div class="col-md-6">
-          <img src="assets/logo-transparent.png" height="50" class="img-fluid rounded shadow-sm mb-4" alt="About Us">
+          <img *ngIf="companyProfileDto" [src]="getImage(companyProfileDto&&companyProfileDto.aboutLogoPath)"
+            height="50" class="img-fluid rounded shadow-sm mb-4" alt="About Us"/>
+
+            <img *ngIf="!companyProfileDto" src="../../../../assets/logo-transparent.png"
+            height="50" class="img-fluid rounded shadow-sm mb-4" alt="About Us"/>
         </div>
         <div class="col-md-6">
-          <h3 class="text-secondary">Our Story</h3>
-          <p>Abizzer is dedicated to fostering professional growth and excellence in our community. We bring together
-            industry leaders, experts, and ambitious professionals.</p>
-          <p>Abizzer is dedicated to fostering professional growth and excellence in our community. We bring together
-            industry leaders, experts, and ambitious professionals.
-            Abizzer is dedicated to fostering professional growth and excellence in our community. We bring together
-            industry leaders, experts, and ambitious professionals.
-          </p>
-          <p>Abizzer is dedicated to fostering professional growth and excellence in our community. We bring together
-            industry leaders, experts, and ambitious professionals.
-            Abizzer is dedicated to fostering professional growth and excellence in our community. We bring together
-            industry leaders, experts, and ambitious professionals.
-            Abizzer is dedicated to fostering professional growth and excellence in our community. We bring together
-            industry leaders, experts, and ambitious professionals.
-          </p>
-          <p>Abizzer is dedicated to fostering professional growth and excellence in our community. We bring together
-            industry leaders, experts, and ambitious professionals.</p>
+          <h3 class="text-secondary">{{'Our_Story'|translate}}</h3>
+          <div *ngIf="companyProfileDto&&selectedLanguage=='en'" [innerHTML]="companyProfileDto&&companyProfileDto.aboutUs">
+
+          </div>
+          <div *ngIf="companyProfileDto&&selectedLanguage=='am'" [innerHTML]="companyProfileDto&&companyProfileDto.localAboutUs">
+
+          </div>
+
+          <div *ngIf="!companyProfileDto&&selectedLanguage=='en'">
+
+             <p>
+              Abizzer is dedicated to fostering professional growth and excellence in our community. 
+              We bring together industry leaders, experts, and ambitious professionals.  
+              Abizzer is dedicated to fostering professional growth and excellence in our community. 
+              We bring together industry leaders, experts, and ambitious professionals. 
+              </p>
+              <br/>
+              <p>
+              Abizzer is dedicated to fostering professional growth and excellence in our community.
+               We bring together industry leaders, experts, and ambitious professionals.  
+               Abizzer is dedicated to fostering professional growth and excellence in our community. 
+               We bring together industry leaders, experts, and ambitious professionals. 
+               Abizzer is dedicated to fostering professional growth and excellence in our community. </p>
+              <br/>
+              <p>
+              We bring together industry leaders, experts, and ambitious professionals. 
+              Abizzer is dedicated to fostering professional growth and excellence in our community. 
+              We bring together industry leaders, experts, and ambitious professionals.  
+              Abizzer is dedicated to fostering professional growth and excellence in our community. 
+              We bring together industry leaders, experts, and ambitious professionals.</p>
+          </div>
+          <div *ngIf="!companyProfileDto&&selectedLanguage=='am'">
+
+            አቢዘር በማህበረሰባችን ውስጥ ሙያዊ እድገትን እና የላቀ ደረጃን ለማሳደግ ቁርጠኛ ነው። የኢንዱስትሪ መሪዎችን፣ ባለሙያዎችን እና ከፍተኛ ፍላጎት ያላቸውን ባለሙያዎች ሰብስበናል። 
+
+አቢዘር በማህበረሰባችን ውስጥ ሙያዊ እድገትን እና የላቀ ደረጃን ለማሳደግ ቁርጠኛ ነው። የኢንዱስትሪ መሪዎችን፣ ባለሙያዎችን እና ከፍተኛ ፍላጎት ያላቸውን ባለሙያዎች ሰብስበናል።   
+
+አቢዘር በማህበረሰባችን ውስጥ ሙያዊ እድገትን እና የላቀ ደረጃን ለማሳደግ ቁርጠኛ ነው። የኢንዱስትሪ መሪዎችን፣ ባለሙያዎችን እና ከፍተኛ ፍላጎት ያላቸውን ባለሙያዎች ሰብስበናል።
+
+ አቢዘር በማህበረሰባችን ውስጥ ሙያዊ እድገትን እና የላቀ ደረጃን ለማሳደግ ቁርጠኛ ነው። የኢንዱስትሪ መሪዎችን፣ ባለሙያዎችን እና ከፍተኛ ፍላጎት ያላቸውን ባለሙያዎች ሰብስበናል። አቢዘር በማህበረሰባችን ውስጥ ሙያዊ እድገትን እና የላቀ ደረጃን ለማሳደግ ቁርጠኛ ነው።   
+
+የኢንዱስትሪ መሪዎችን፣ ባለሙያዎችን እና ከፍተኛ ፍላጎት ያላቸውን ባለሙያዎች ሰብስበናል። አቢዘር በማህበረሰባችን ውስጥ ሙያዊ እድገትን እና የላቀ ደረጃን ለማሳደግ ቁርጠኛ ነው። የኢንዱስትሪ መሪዎችን፣ ባለሙያዎችን እና ከፍተኛ ፍላጎት ያላቸውን ባለሙያዎች ሰብስበናል። አቢዘር በማህበረሰባችን ውስጥ ሙያዊ እድገትን እና የላቀ ደረጃን ለማሳደግ ቁርጠኛ ነው። የኢንዱስትሪ መሪዎችን፣ ባለሙያዎችን እና ከፍተኛ ፍላጎት ያላቸውን ባለሙያዎች ሰብስበናል።
+          </div>
 
           <div class="row mt-4">
             <div class="col-6">
               <div class="stat-box bg-light text-center py-3 rounded shadow-sm">
-                <h4 class="text-primary fw-bold">1000+</h4>
-                <p class="text-muted">Active Members</p>
+                <h4 class="text-primary fw-bold">{{(companyProfileDto&&companyProfileDto.membersCount)||'1000'}}+</h4>
+                <p class="text-muted">{{'Active_Members'|translate}}</p>
               </div>
             </div>
             <div class="col-6">
               <div class="stat-box bg-light text-center py-3 rounded shadow-sm">
-                <h4 class="text-primary fw-bold">50+</h4>
-                <p class="text-muted">Events per Year</p>
+                <h4 class="text-primary fw-bold">{{(companyProfileDto&&companyProfileDto.eventsPerYear)||'100'}}+</h4>
+                <p class="text-muted">{{'Events_Per_Year'|translate}}</p>
               </div>
             </div>
           </div>
@@ -261,7 +297,7 @@
   <section id="services" class="section-padding bg-light">
     <div class="container">
       <div class="section-header text-center mb-5">
-        <h2 class="fw-bold text-primary">Our Services for Orphans</h2>
+        <h2 class="fw-bold text-primary">{{'Our_Services_for_Orphans'|translate}}</h2>
         <div class="divider mx-auto"></div>
       </div>
       <div class="row">
@@ -270,8 +306,8 @@
             <div class="icon-box mb-3">
               <i class="ti ti-home fa-2x text-primary"></i>
             </div>
-            <h4 class="fw-bold">Shelter</h4>
-            <p>Providing a safe and loving home for orphaned children.</p>
+            <h4 class="fw-bold">{{'Shelter'|translate}}</h4>
+            <p>{{'Providing_a_safe_and_loving_home_for_orphaned_children'|translate}}</p>
           </div>
         </div>
         <div class="col-md-4">
@@ -279,8 +315,8 @@
             <div class="icon-box mb-3">
               <i class="ti ti-book fa-2x text-primary"></i>
             </div>
-            <h4 class="fw-bold">Education</h4>
-            <p>Offering access to quality education and learning resources.</p>
+            <h4 class="fw-bold">{{'Education'|translate}}</h4>
+            <p>{{'Offering_access_to_quality_education_and_learning_resources'|translate}}</p>
           </div>
         </div>
         <div class="col-md-4">
@@ -288,8 +324,8 @@
             <div class="icon-box mb-3">
               <i class="ti ti-heart fa-2x text-primary"></i>
             </div>
-            <h4 class="fw-bold">Counseling</h4>
-            <p>Providing emotional and psychological support for orphans.</p>
+            <h4 class="fw-bold">{{'Counseling'|translate}}</h4>
+            <p>{{'Providing_emotional_and_psychological_support_for_orphans'|translate}}</p>
           </div>
         </div>
       </div>
@@ -301,48 +337,48 @@
   <section id="membership" class="section-padding">
     <div class="container">
       <div class="section-header text-center mb-5">
-        <h2 class="fw-bold text-primary">Membership Subscriptions</h2>
+        <h2 class="fw-bold text-primary">{{'Membership_Subscriptions'|translate}}</h2>
         <div class="divider mx-auto"></div>
       </div>
       <div class="row">
         <div class="col-md-4">
           <div class="membership-card text-center shadow-sm p-4 rounded bg-light">
-            <h3 class="fw-bold">Weekly</h3>
-            <div class="price mb-3">50 ETB/week</div>
+            <h3 class="fw-bold">{{'Weekly'|translate}}</h3>
+            <div class="price mb-3">50 {{'ETB'|translate}}/{{'Week'|translate}}</div>
             <ul class="benefits-list list-unstyled text-start px-4">
-              <li>Network Access</li>
-              <li>Monthly Newsletters</li>
-              <li>Event Discounts</li>
+              <li>{{'Network_Access'|translate}}</li>
+              <li>{{'Monthly_Newsletters'|translate}}</li>
+              <li>{{'Event_Discounts'|translate}}</li>
             </ul>
-            <button class="btn btn-outline-primary mt-3" (click)="navigateToRegister()">Select Plan</button>
+            <button class="btn btn-outline-primary mt-3" (click)="navigateToRegister()">{{'Select_Plan'|translate}}</button>
           </div>
         </div>
         <div class="col-md-4">
           <div class="membership-card featured text-center shadow-lg p-4 rounded bg-white position-relative">
-            <div class="badge bg-primary text-white position-absolute top-0 start-50 translate-middle mt-4">Popular
+            <div class="badge bg-primary text-white position-absolute top-0 start-50 translate-middle mt-4">{{'Popular'|translate}}
             </div>
-            <h3 class="fw-bold">Monthly</h3>
-            <div class="price mb-3">ETB100/month</div>
+            <h3 class="fw-bold mt-2">{{'Monthly'|translate}}</h3>
+            <div class="price mb-3">{{'ETB'|translate}} 100/{{'month'|translate}}</div>
             <ul class="benefits-list list-unstyled text-start px-4">
-              <li>All Basic Benefits</li>
-              <li>Training Access</li>
-              <li>Mentorship Program</li>
-              <li>Priority Support</li>
+              <li>{{'All_Basic_Benefits'|translate}}</li>
+              <li>{{'Training_Access'|translate}}</li>
+              <li>{{'Mentorship_Program'|translate}}</li>
+              <li>{{'Priority_Support'|translate}}</li>
             </ul>
-            <button class="btn btn-primary mt-3" (click)="navigateToRegister()">Select Plan</button>
+            <button class="btn btn-primary mt-3" (click)="navigateToRegister()">{{'Select_Plan'|translate}}</button>
           </div>
         </div>
         <div class="col-md-4">
           <div class="membership-card text-center shadow-sm p-4 rounded bg-light">
-            <h3 class="fw-bold">Yearly</h3>
-            <div class="price mb-3">Contact Us</div>
+            <h3 class="fw-bold">{{'Yearly'|translate}}</h3>
+            <div class="price mb-3">{{'Contact_Us'|translate}}</div>
             <ul class="benefits-list list-unstyled text-start px-4">
-              <li>All Professional Benefits</li>
-              <li>Custom Solutions</li>
-              <li>Dedicated Support</li>
-              <li>Team Management</li>
+              <li>{{'All_Professional_Benefits'|translate}}</li>
+              <li>{{'Custom_Solutions'|translate}}</li>
+              <li>{{'Dedicated_Support'|translate}}</li>
+              <li>{{'Team_Management'|translate}}</li>
             </ul>
-            <button class="btn btn-outline-primary mt-3" (click)="contactSales()">Contact Sales</button>
+            <button class="btn btn-outline-primary mt-3" (click)="contactSales()">{{'Contact_Sales'|translate}}</button>
           </div>
         </div>
       </div>
@@ -353,7 +389,7 @@
   <section id="contact" class="section-padding bg-light">
     <div class="container">
       <div class="section-header text-center mb-5">
-        <h2 class="fw-bold text-primary">Contact Us</h2>
+        <h2 class="fw-bold text-primary">{{'Contact_Us'|translate}}</h2>
         <div class="divider mx-auto"></div>
       </div>
       <div class="row justify-content-center">
@@ -362,19 +398,23 @@
             <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
               <div class="row">
                 <div class="col-md-6 mb-3">
-                  <input type="text" class="form-control" placeholder="Your Name" formControlName="name">
+                  <input type="text" class="form-control" [placeholder]="'Your_Name'|translate" formControlName="name">
                 </div>
                 <div class="col-md-6 mb-3">
-                  <input type="email" class="form-control" placeholder="Your Email" formControlName="email">
+                  <input type="email" class="form-control" [placeholder]="'Your_Email'|translate" formControlName="email">
                 </div>
               </div>
               <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Subject" formControlName="subject">
+                <input type="text" class="form-control" [placeholder]="'Subject'|translate" formControlName="subject">
               </div>
               <div class="mb-3">
-                <textarea class="form-control" rows="5" placeholder="Message" formControlName="message"></textarea>
+                <textarea class="form-control" rows="5" [placeholder]="'Message'|translate" formControlName="message"></textarea>
               </div>
-              <button type="submit" class="btn btn-primary w-100">Send Message</button>
+              <button type="submit" class="btn btn-primary w-100"
+              
+              [disabled]="!contactForm.valid"
+              
+              >{{'Send_Message'|translate}}</button>
             </form>
           </div>
         </div>
@@ -388,19 +428,19 @@
     <div class="row">
       <div class="col-md-4">
         <img src="assets/logo.jpg" style="border-radius: 50%;" height="100" alt="Abizzer Logo" class="mb-3">
-        <p>Empowering professionals through collaboration and growth.</p>
+        <p>{{'Empowering_professionals_through_collaboration_and_growth'|translate}}</p>
       </div>
       <div class="col-md-4">
-        <h5 class="text-white">Quick Links</h5>
+        <h5 class="text-white">{{'Quick_Links'|translate}}</h5>
         <ul class="footer-links list-unstyled">
-          <li><a href="#home" class="text-white">Home</a></li>
-          <li><a href="#about" class="text-white">About Us</a></li>
-          <li><a href="#services" class="text-white">Services</a></li>
-          <li><a href="#membership" class="text-white">Membership</a></li>
+          <li><a href="#home" class="text-white">{{'Home'|translate}}</a></li>
+          <li><a href="#about" class="text-white">{{'About_Us'|translate}}</a></li>
+          <li><a href="#services" class="text-white">{{'Services'|translate}}</a></li>
+          <li><a href="#membership" class="text-white">{{'Membership'|translate}}</a></li>
         </ul>
       </div>
       <div class="col-md-4">
-        <h5 class="text-white">Contact Info</h5>
+        <h5 class="text-white">{{'Contact_Info'|translate}}</h5>
         <ul class="footer-contact list-unstyled">
           <li><i class="fas fa-map-marker-alt"></i> 123 Business Street, City</li>
           <li><i class="fas fa-phone"></i> +1 234 567 890</li>
@@ -410,7 +450,11 @@
     </div>
     <hr class="bg-light">
     <div class="text-center">
-      <p class="mb-0">&copy; 2024 Abizzer. All rights reserved.</p>
+      <p class="mb-0">&copy; 2024 ABI-ZEER Community. All rights reserved.</p>
+      <br/>
+      <p class="m-0"> Powerd By <a style="color:white">DAF-TECH Computer Engineering</a> </p>
+       
     </div>
+
   </div>
 </footer>

@@ -33,6 +33,7 @@ import { NgxEchartsModule } from "ngx-echarts";
 import { LandingPageComponent } from "./membership/pages/landing-page/landing-page.component";
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import { QuillModule } from "ngx-quill";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -65,6 +66,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     NgApexchartsModule,
     QRCodeModule,
+    QuillModule.forRoot(),
     NgxEchartsModule.forRoot({ echarts }),
     TranslateModule.forRoot({
       loader: {

@@ -15,6 +15,8 @@ import { AnnouncmentComponent } from "./announcment/announcment.component";
 import { AddCourseComponent } from "./course/add-course/add-course.component";
 import { AddAnnouncmentComponent } from "./announcment/add-announcment/add-announcment.component";
 import { EventDescriptionComponent } from "./event-description/event-description.component";
+import { CompanyProfileComponent } from "./company-profile/company-profile.component";
+import { ContactUsComponent } from "./contact-us/contact-us.component";
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { EventDescriptionComponent } from "./event-description/event-description
     AddCourseComponent,
     AddAnnouncmentComponent,
     EventDescriptionComponent,
+    CompanyProfileComponent,
+    ContactUsComponent
   ],
   imports: [
     CommonModule,

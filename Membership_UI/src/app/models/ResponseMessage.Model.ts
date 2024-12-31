@@ -15,8 +15,10 @@ export interface ResponseMessage2 {
 export interface SelectList {
   id?: string;
   name: string;
-  empId: string;
+  empId?: string;
   amount?: number;
+
+  code? :number
   // employeeId ?: string
   // reason?:string
   // photo ?:string

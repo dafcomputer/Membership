@@ -128,6 +128,8 @@ export class MembersComponent implements OnInit {
       backdrop: "static",
     });
     modalRef.componentInstance.memberIdToDelete = memberId;
+    modalRef.componentInstance.deleteType = 'member';
+    
 
     modalRef.result.then(() => {
       this.getMemberss();

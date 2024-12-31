@@ -32,6 +32,9 @@ namespace MembershipImplementation.Datas
             services.AddScoped<IDashboardService, DashboardService>();
             services.AddScoped<IEventMessageService, EventMessageService>();
 
+            services.AddScoped<ICompanyProfileService, CompanyProfileService>();
+            services.AddScoped<IContactService, ConctactUsService>();
+
             #region             
             services.AddScoped<IRegionService, RegionService>();
             services.AddScoped<IZoneService, ZoneService>();

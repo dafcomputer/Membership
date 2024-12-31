@@ -94,7 +94,6 @@ var password = emailSettings["SMTPSetting:Password"];
 builder.Services.AddFluentEmail(defaultFromEmail)
     .AddSmtpSender(host, port, userName, password);
 builder.Services.AddCoreBusiness();
-
 builder.Services.AddAutoMapper(typeof(AutoMapperConfigurations));
 
 
@@ -125,17 +124,12 @@ builder.Services.AddAuthentication(x =>
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSwaggerGen();
-
 builder.Services.Configure<FormOptions>(options =>
     {
         options.MultipartBodyLengthLimit = 104857600; // 100 MB, adjust as needed
     });
 
-
-
 var app = builder.Build();
-
-
 app.UseDeveloperExceptionPage();
 
 
@@ -183,11 +177,8 @@ app.UseStaticFiles(new StaticFileOptions
 
 
 RecurringJob.AddOrUpdate<IMemberService>(a => a.UPdateExpiredDateStatus(), Cron.Daily(0));
-
 RecurringJob.AddOrUpdate<IMemberService>(a => a.UpdateBirthDate(), Cron.Daily(0));
 
 app.UseAuthentication();
-
 app.MapControllers();
-
 app.Run();

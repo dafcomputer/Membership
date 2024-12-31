@@ -34,6 +34,8 @@ namespace MembershipInfrustructure.Data
         public DbSet<GeneralCodes> GeneralCodes { get; set; }
 
         public DbSet<MembershipType> MembershipTypes { get; set; }
+        
+        public DbSet<ContactUs> ContactUs { get; set; }
 
 
         #endregion
@@ -42,6 +44,7 @@ namespace MembershipInfrustructure.Data
         #region Users
 
 
+        public DbSet<CompanyProfile> CompanyProfile { get; set; }
         public DbSet<Member> Members { get; set; }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<MemberPayment> MemberPayments { get; set; }

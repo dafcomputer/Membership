@@ -118,6 +118,92 @@ namespace MembershipInfrustructure.Migrations
                     b.ToTable("Announcments");
                 });
 
+            modelBuilder.Entity("MembershipInfrustructure.Model.Configuration.CompanyProfile", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AboutUs")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AboutUsLogoPath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedById")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DashboardImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LocalAboutUs")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LocalDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LocalTitle")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Rowstatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CompanyProfile");
+                });
+
+            modelBuilder.Entity("MembershipInfrustructure.Model.Configuration.ContactUs", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Rowstatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ContactUs");
+                });
+
             modelBuilder.Entity("MembershipInfrustructure.Model.Configuration.GeneralCodes", b =>
                 {
                     b.Property<Guid>("Id")
@@ -296,7 +382,7 @@ namespace MembershipInfrustructure.Migrations
                     b.Property<Guid>("MemberId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("MessageStatus")
+                    b.Property<int?>("MessageStatus")
                         .HasColumnType("int");
 
                     b.Property<int>("Rowstatus")

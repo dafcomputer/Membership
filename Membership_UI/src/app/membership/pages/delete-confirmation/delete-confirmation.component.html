@@ -11,7 +11,7 @@
 
     <div class="card">
         <div class="modal-body">
-            Are you sure you want to delete this member?
+            Are you sure you want to delete this {{this.deleteType=='memberType'?'member type':'member'}} ?
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" (click)="closeModal()" data-bs-dismiss="modal">Cancel</button>

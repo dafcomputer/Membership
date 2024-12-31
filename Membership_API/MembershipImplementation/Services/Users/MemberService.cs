@@ -1007,9 +1007,11 @@ private async Task CreateAndNotifyUser(Member member, string memberID)
             return membersReports;
         }
 
-        public async Task<ResponseMessage> ImportMemberFormExcel(IFormFile ExcelFile)
+        public async Task<ResponseMessage<List<string>>> ImportMemberFormExcel(IFormFile ExcelFile)
         {
 
+            List<string> phoneNumbers = new List<string>();
+            List<string> memberships = new List<string>();
             try
             {
                 int counter = 0;
@@ -1025,9 +1027,9 @@ private async Task CreateAndNotifyUser(Member member, string memberID)
                         Member member = new Member();
                         var fullName = worksheet.Cells[row, 1].Value?.ToString() ?? string.Empty;
                         var PhoneNumber = worksheet.Cells[row, 2].Value?.ToString() ?? string.Empty;
-                        var birthdateExcel = worksheet.Cells[row, 11].Value?.ToString();
-
-                        DateTime birthDate = DateTime.Parse(birthdateExcel);
+                        var email = worksheet.Cells[row, 3].Value?.ToString() ?? string.Empty;
+                        
+                        DateTime birthDate = DateTime.Now;
                         var result = await CheckIfPhoneNumberExistFromBot(PhoneNumber);
 
                         if (!result.Exist)
@@ -1035,21 +1037,16 @@ private async Task CreateAndNotifyUser(Member member, string memberID)
 
                             var memberID = "";
 
-                            var paymentStatus = worksheet.Cells[row, 13].Value?.ToString().Trim() ?? string.Empty;
-                            var gender = worksheet.Cells[row, 8].Value?.ToString().Trim() ?? string.Empty;
-
-                            var memberType = worksheet.Cells[row, 3].Value?.ToString()?.Trim() ?? string.Empty;
-                            var selectedMembershipType = await _dbContext.MembershipTypes.Where(x => x.ShortCode == memberType).FirstOrDefaultAsync();
+                            var paymentStatus = PaymentStatus.EXPIRED;
+                            var gender = Gender.MALE;
+                    
+                            var selectedMembershipType = await _dbContext.MembershipTypes.Where(x => x.ShortCode == "OE").FirstOrDefaultAsync();
 
                             if (selectedMembershipType == null)
                             {
+                                memberships.Add(PhoneNumber);
 
-                                return new ResponseMessage
-                                {
-                                    Data = $"Membership type {memberType} is not Found for Member {fullName}!! \n{counter} Members Added Successfully",
-                                    Message = "Excel Format Error",
-                                    Success = false
-                                };
+                                continue;
 
                             }
                             memberID = await _generalConfig.GenerateCode(0, selectedMembershipType.ShortCode);
@@ -1057,22 +1054,23 @@ private async Task CreateAndNotifyUser(Member member, string memberID)
                
 
 
-                            var region = worksheet.Cells[row, 14].Value?.ToString() ?? string.Empty;
-                            var selectedRegion = await _dbContext.Regions.Where(x => x.RegionName == region).FirstOrDefaultAsync();
+                            var region = worksheet.Cells[row, 4].Value?.ToString() ?? string.Empty;
+                            var selectedRegion = await _dbContext.Regions.Where(x => x.Id == Guid.Parse(region.Trim())).FirstOrDefaultAsync();
 
 
                             member.CreatedDate = DateTime.Now;
                             member.Id = Guid.NewGuid();
                             member.FullName = fullName;
-                            member.PhoneNumber = PhoneNumber;
+                            member.PhoneNumber = PhoneNumber.Trim();
                             member.MembershipTypeId = selectedMembershipType.Id;
-                            member.Zone = worksheet.Cells[row, 4].Value?.ToString() ?? string.Empty;
-                            member.Woreda = worksheet.Cells[row, 5].Value?.ToString() ?? string.Empty;
+                            member.Zone = "";
+                            member.Woreda ="";
                             member.RegionId = selectedRegion != null ? selectedRegion.Id : null;
-
-                            member.Gender = gender == "M" ? Gender.MALE : Gender.FEMALE;
+                            member.Email = email;
+                            member.Gender = Gender.MALE;
 
                             member.BirthDate = birthDate;
+                            
 
                             member.MemberId = memberID;
 
@@ -1092,30 +1090,21 @@ private async Task CreateAndNotifyUser(Member member, string memberID)
 
                             counter += 1;
 
-
-
-
                         }
                         else
                         {
-                            return new ResponseMessage
-                            {
-                                Data = $"PhoneNumber {PhoneNumber} registerd on Member {fullName} is already Exists !! \n{counter} Members Added Successfully ",
-                                Message = "Excel Format Error",
-                                Success = false
-                            };
+                           continue;
                         }
 
 
-
-
-
-
                     }
+                  
                 }
-                return new ResponseMessage
+                phoneNumbers.Add($"{counter} Members Added Successfully!");
+                phoneNumbers.AddRange(memberships);
+                return new ResponseMessage<List<string>>
                 {
-                    Data = $"{counter} Members Added Successfully!",
+                    Data =phoneNumbers,
                     Message = "Add Successfully From Excel!!!",
                     Success = true
                 };
@@ -1123,7 +1112,7 @@ private async Task CreateAndNotifyUser(Member member, string memberID)
             }
             catch (Exception ex)
             {
-                return new ResponseMessage
+                return new ResponseMessage<List<string>>()
                 {
 
                     Message = ex.InnerException.Message,

@@ -99,6 +99,15 @@ const NavigationItems = [
         breadcrumbs: false,
       },
       {
+        id: "data",
+        title: "Unsent Messages",
+        type: "item",
+        role: ["Admin", "SuperAdmin"],
+        icon: "ti ti-message",
+        url: "/members/unsent-messages",
+        breadcrumbs: false,
+      },
+      {
         id: "requestd",
         title: "Requested Id Cards",
         type: "item",
@@ -156,6 +165,26 @@ const NavigationItems = [
             url: "/configuration/location-setting",
             breadcrumbs: false,
           },
+          {
+            id: "data",
+            title: "Company Profile",
+            type: "item",
+            role: ["Admin", "SuperAdmin"],
+            url: "/configuration/company-profile",
+            breadcrumbs: false,
+          },
+
+          {
+            id: "data",
+            title: "Contact Us",
+            type: "item",
+            role: ["Admin", "SuperAdmin"],
+            url: "/configuration/contact-us",
+            breadcrumbs: false,
+          },
+
+
+         
         ],
       },
     ],

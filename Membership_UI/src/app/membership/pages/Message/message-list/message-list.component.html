@@ -32,10 +32,35 @@
             </div>
         </div>
 
-        <div class="col-3">
-            <input type="text" placeholder="search ..." class="form-control" style="font-size: 18px;"
-                [(ngModel)]="searchTerm" (input)="applyFilter()" placeholder="Search">
+        <div class="row">
+
+            <div class="col-3">
+                <div class="form-floating mb-3">
+
+                    <input type="text" placeholder="search ..." class="form-control" style="font-size: 18px;"
+                        [(ngModel)]="searchTerm" (input)="applyFilter()" placeholder="Search">
+
+                    <label for="floatingInput">Filter :</label>
+                </div>
+            </div>
+
+
+            <div class="col-3">
+
+                <div class="form-floating mb-3">
+
+                    <select class="form-control" [(ngModel)]="isApproved" (change)="getMessages()">
+
+                        <option [value]="true">Approved</option>
+                        <option [value]="false">Not Approved</option>
+
+                    </select>
+                    <label for="floatingInput">Message Status</label>
+                </div>
+            </div>
+
         </div>
+
 
         <table class="custom-table mt-4">
             <thead>
@@ -51,12 +76,44 @@
             </thead>
             <tbody>
 
+                <tr *ngFor="let item of eventMessages">
+                    <td>{{item.content}}</td>
+                    <td>{{item.messageTypeGet}}</td>
+                    <td>
+                        <span *ngIf="item.isApproved" class="badge bg-success rounded-pill">
+                            Approved
+                        </span>
+                        <span *ngIf="!item.isApproved" class="badge bg-danger rounded-pill">
+                            Not Approved
+                        </span>
+                    </td>
+
+                    <td *ngIf="userView.role.includes('SuperAdmin')">
+
+                        <div *ngIf="!item.isApproved">
+                            <button type="button" class="btn btn-outline-warning btn-sm me-1"
+                            (click)="updateMessage(item)">
+                            <i class="ti ti-pencil"></i>
+                        </button>
+                      
+                        </div>
+
+                        <div *ngIf="item.isApproved">
+                            <button type="button" class="btn btn-outline-primary btn-sm me-1"
+                            (click)="detailMessage(item)">
+                            <i class="ti ti-eye"></i>
+                        </button>
+                      
+                        </div>
+
+                    </td>
+                </tr>
+
 
             </tbody>
 
         </table>
-        <div class="card flex justify-content-center">
-        </div>
+     
     </div>
 
 </div>

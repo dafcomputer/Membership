@@ -8,6 +8,7 @@ import { CourseComponent } from "../course/course.component";
 import { UserService } from "src/app/services/user.service";
 import { UserView } from "src/app/models/auth/userDto";
 import { IMembershipTypeGetDto } from "src/app/models/configuration/IMembershipDto";
+import { DeleteConfirmationComponent } from "../../delete-confirmation/delete-confirmation.component";
 
 @Component({
   selector: "app-membership-types",
@@ -35,7 +36,8 @@ export class MembershipTypesComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     private userService: UserService,
-    private controlService: ConfigurationService
+    private controlService: ConfigurationService,
+   
   ) {}
 
   getMembershipTypes() {
@@ -60,6 +62,18 @@ export class MembershipTypesComponent implements OnInit {
   }
 
   removeMembershipType(MembershipTypeId: string) {
+
+    let modalRef = this.modalService.open(DeleteConfirmationComponent, {
+      backdrop: "static",
+    });
+    modalRef.componentInstance.memberIdToDelete = MembershipTypeId;
+    modalRef.componentInstance.deleteType ='memberType'
+
+    modalRef.result.then(()=>{
+      this.getMembershipTypes();
+    })
+ 
+
     // this.confirmationService.confirm({
     //   message: "Are You sure you want to delete this MembershipType?",
     //   header: "Delete Confirmation",
