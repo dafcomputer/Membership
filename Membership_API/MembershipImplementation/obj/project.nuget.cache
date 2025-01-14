@@ -2,7 +2,7 @@
   "version": 2,
   "dgSpecHash": "E7E7ICokP9M=",
   "success": true,
-  "projectFilePath": "/Users/oza/Developer/Personal/DAF Computer/Membership/Membership_API/MembershipImplementation/MembershipImplementation.csproj",
+  "projectFilePath": "/Users/oza/Developer/personal/DAF Computer/Membership/Membership_API/MembershipImplementation/MembershipImplementation.csproj",
   "expectedPackageFiles": [
     "/Users/oza/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/Users/oza/.nuget/packages/azure.core/1.35.0/azure.core.1.35.0.nupkg.sha512",
